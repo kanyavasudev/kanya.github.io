@@ -1,695 +1,556 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Kanya V | Data Analyst</title>
-<meta name="description" content="Kanya V — Data & Marketing Analyst from Chennai. I find the story inside the data."/>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap" rel="stylesheet"/>
+<meta name="description" content="Kanya V — Data Analyst from Tamil Nadu. I ask too many questions. Data helps me answer them."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "surface": "#fbf9f6",
-          "surface-container": "#efeeeb",
-          "surface-container-low": "#f5f3f0",
-          "surface-container-high": "#eae8e5",
-          "surface-container-lowest": "#ffffff",
-          "surface-bright": "#fbf9f6",
-          "on-surface": "#1b1c1a",
-          "on-surface-variant": "#45483f",
-          "primary": "#576147",
-          "primary-fixed": "#dce7c5",
-          "on-primary": "#ffffff",
-          "on-primary-fixed": "#161e09",
-          "secondary": "#6a5c44",
-          "secondary-container": "#f4e0c1",
-          "on-secondary-container": "#71624a",
-          "outline": "#76786e",
-          "outline-variant": "#c6c7bc",
-          "inverse-surface": "#30312f",
-          "surface-dim": "#dbdad7",
-          "tertiary": "#6f5766",
-          "tertiary-container": "#896f7f",
-          "on-tertiary-container": "#ffffff",
-        },
-        fontFamily: {
-          "headline": ["Newsreader", "serif"],
-          "body": ["Manrope", "sans-serif"],
-        },
-        borderRadius: {
-          "DEFAULT": "0.125rem",
-          "lg": "0.25rem",
-          "xl": "0.5rem",
-          "full": "0.75rem"
-        },
-      },
-    },
-  }
-</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap" rel="stylesheet"/>
 <style>
-  * { box-sizing: border-box; }
-  body { font-family: 'Manrope', sans-serif; background-color: #fbf9f6; color: #1b1c1a; scroll-behavior: smooth; }
-  .font-serif { font-family: 'Newsreader', serif; }
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
-  .hide-scrollbar::-webkit-scrollbar { display: none; }
-  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  *{box-sizing:border-box;}
+  body{font-family:'Plus Jakarta Sans',sans-serif;background-color:#fcf9f4;color:#1c1c19;line-height:1.6;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;vertical-align:middle;line-height:1;}
+  .font-serif{font-family:'Lora',serif;}
+  .font-mono{font-family:'Fira Code',monospace;}
 
-  /* Fade-in animation */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up { animation: fadeUp 0.7s ease forwards; }
-  .delay-1 { animation-delay: 0.1s; opacity: 0; }
-  .delay-2 { animation-delay: 0.25s; opacity: 0; }
-  .delay-3 { animation-delay: 0.4s; opacity: 0; }
-  .delay-4 { animation-delay: 0.55s; opacity: 0; }
+  /* Reveal animation */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  .d1{transition-delay:0.1s;} .d2{transition-delay:0.2s;} .d3{transition-delay:0.3s;}
 
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  /* Hero animations */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .h1{animation:fadeUp 0.7s ease 0.1s both;}
+  .h2{animation:fadeUp 0.7s ease 0.3s both;}
+  .h3{animation:fadeUp 0.7s ease 0.5s both;}
+  .h4{animation:fadeUp 0.7s ease 0.7s both;}
+  .h5{animation:fadeUp 0.7s ease 0.9s both;}
 
-  /* Nav active state */
-  .nav-link.active { color: #576147; border-bottom: 1px solid #576147; }
+  /* Bounce */
+  @keyframes bounce2{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+  .bounce{animation:bounce2 1.6s ease-in-out infinite;}
 
-  /* Side nav active */
-  .side-link.active { color: #576147; font-weight: 700; border-left: 2px solid #576147; }
+  /* Nav */
+  .nav-a{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:#3d4949;transition:color 0.2s;}
+  .nav-a:hover,.nav-a.active{color:#006767;}
+  #mobile-nav{display:none;}
+  #mobile-nav.open{display:flex;}
 
-  /* Project card hover */
-  .project-card:hover .project-img { transform: scale(1.04); }
-  .project-img { transition: transform 0.6s ease; }
+  /* Section label */
+  .slabel{font-family:'Fira Code',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6d7979;display:block;margin-bottom:14px;}
 
-  /* Grain overlay on hero */
-  .grain::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    opacity: 0.3;
-  }
+  /* Colors */
+  .c-primary{color:#006767;} .c-secondary{color:#865300;} .c-muted{color:#3d4949;} .c-outline{color:#6d7979;}
 
-  /* Photo placeholder */
-  .photo-placeholder {
-    background: linear-gradient(135deg, #e8e3da 0%, #d4cbbf 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #76786e;
-  }
+  /* Skill pill */
+  .pill{font-family:'Fira Code',monospace;font-size:11px;background:#ebe8e3;color:#3d4949;padding:4px 12px;border-radius:999px;display:inline-block;}
 
-  /* Highlight pill */
-  .highlight-pill {
-    display: inline-block;
-    background: #dce7c5;
-    color: #576147;
-    padding: 2px 12px;
-    border-radius: 999px;
-  }
+  /* Blockquote */
+  .bq-bar{width:40px;height:3px;background:#865300;display:block;margin-bottom:20px;}
 
-  /* Mobile nav */
-  #mobile-menu { display: none; }
-  #mobile-menu.open { display: flex; }
+  /* Project image */
+  .pimg{width:100%;height:210px;object-fit:cover;object-position:top;display:block;}
+
+  /* Photo */
+  .photo-box{width:100%;max-width:320px;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#e8e3da,#d4cbbf);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .photo-box img{width:100%;height:100%;object-fit:cover;object-position:top;}
+
+  /* Writing hover */
+  .wrow{transition:background 0.2s;border-radius:10px;padding:28px 16px;margin:0 -16px;}
+  .wrow:hover{background:#f0ede9;}
+
+  /* Divider */
+  .hr{height:1px;background:#bcc9c8;opacity:0.35;margin:0;}
+
+  @media(max-width:768px){.photo-box{max-width:220px;margin:0 auto;}}
 </style>
 </head>
-<body class="bg-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<body style="background:#fcf9f4;">
 
-<!-- ═══════════════════════════════════════
-     TOP NAV
-═══════════════════════════════════════ -->
-<nav class="fixed top-0 w-full z-50 bg-[#fbf9f6]/90 backdrop-blur-xl border-b border-outline-variant/20">
-  <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-[1440px] mx-auto">
-    <span class="text-lg font-serif italic text-primary">Kanya V</span>
-    <!-- Desktop nav -->
-    <div class="hidden md:flex gap-8 items-center">
-      <a href="#story" class="nav-link text-secondary font-serif italic tracking-tight hover:text-primary transition-colors duration-200 text-sm">Story</a>
-      <a href="#work" class="nav-link text-secondary font-serif italic tracking-tight hover:text-primary transition-colors duration-200 text-sm">Work</a>
-      <a href="#skills" class="nav-link text-secondary font-serif italic tracking-tight hover:text-primary transition-colors duration-200 text-sm">Skills</a>
-      <a href="#blogs" class="nav-link text-secondary font-serif italic tracking-tight hover:text-primary transition-colors duration-200 text-sm">Blogs</a>
-      <a href="#about" class="nav-link text-secondary font-serif italic tracking-tight hover:text-primary transition-colors duration-200 text-sm">About</a>
+<!-- NAV -->
+<header style="position:fixed;top:0;width:100%;z-index:50;background:rgba(252,249,244,0.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(188,201,200,0.3);">
+  <nav style="display:flex;justify-content:space-between;align-items:center;padding:16px 40px;max-width:1280px;margin:0 auto;">
+    <a href="#hero" class="font-serif" style="font-size:20px;color:#1c1c19;text-decoration:none;">Kanya V</a>
+    <div class="hidden-mobile" style="display:flex;align-items:center;gap:32px;">
+      <a href="#story" class="nav-a" style="text-decoration:none;">Story</a>
+      <a href="#work" class="nav-a" style="text-decoration:none;">Work</a>
+      <a href="#projects" class="nav-a" style="text-decoration:none;">Projects</a>
+      <a href="#writing" class="nav-a" style="text-decoration:none;">Writing</a>
+      <a href="#beyond" class="nav-a" style="text-decoration:none;">Beyond</a>
+      <a href="#now" class="nav-a" style="text-decoration:none;">Now</a>
+      <a href="mailto:kanyavasu7@gmail.com" style="background:#006767;color:#fff;padding:8px 20px;border-radius:999px;font-size:13px;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;">Contact</a>
     </div>
-    <div class="flex items-center gap-3">
-      <a href="mailto:kanyavasu7@gmail.com" class="hidden md:block bg-primary text-white px-5 py-2 rounded font-body text-xs tracking-wide hover:opacity-90 transition-opacity">Contact</a>
-      <!-- Hamburger -->
-      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
-        <span class="w-5 h-0.5 bg-primary block transition-all"></span>
-        <span class="w-5 h-0.5 bg-primary block transition-all"></span>
-        <span class="w-5 h-0.5 bg-primary block transition-all"></span>
-      </button>
-    </div>
-  </div>
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="flex-col px-6 pb-4 gap-4 border-t border-outline-variant/20 bg-[#fbf9f6]">
-    <a href="#story" class="font-serif italic text-secondary hover:text-primary transition-colors py-2 block mobile-nav-link">Story</a>
-    <a href="#work" class="font-serif italic text-secondary hover:text-primary transition-colors py-2 block mobile-nav-link">Work</a>
-    <a href="#skills" class="font-serif italic text-secondary hover:text-primary transition-colors py-2 block mobile-nav-link">Skills</a>
-    <a href="#blogs" class="font-serif italic text-secondary hover:text-primary transition-colors py-2 block mobile-nav-link">Blogs</a>
-    <a href="#about" class="font-serif italic text-secondary hover:text-primary transition-colors py-2 block mobile-nav-link">About</a>
-    <a href="mailto:kanyavasu7@gmail.com" class="bg-primary text-white px-5 py-2 rounded font-body text-xs tracking-wide text-center mt-2">Contact</a>
-  </div>
-</nav>
-
-<!-- ═══════════════════════════════════════
-     SIDE NAV (Desktop only)
-═══════════════════════════════════════ -->
-<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-full py-12 w-56 bg-surface-container-low z-40 border-r border-outline-variant/20">
-  <div class="px-6 mb-10">
-    <p class="font-body uppercase tracking-widest text-[9px] text-primary font-bold">Data Analyst</p>
-    <p class="text-[11px] text-secondary mt-1">Chennai, India</p>
-  </div>
-  <nav class="flex flex-col gap-1">
-    <a href="#hero" class="side-link flex items-center gap-3 text-primary font-bold border-l-2 border-primary pl-4 pr-4 py-3 font-body uppercase tracking-widest text-[9px] hover:bg-surface-container transition-all">
-      <span class="material-symbols-outlined text-base">analytics</span> Overview
-    </a>
-    <a href="#story" class="side-link flex items-center gap-3 text-secondary pl-4 pr-4 py-3 font-body uppercase tracking-widest text-[9px] hover:bg-surface-container transition-all border-l-2 border-transparent">
-      <span class="material-symbols-outlined text-base">history_edu</span> My Story
-    </a>
-    <a href="#work" class="side-link flex items-center gap-3 text-secondary pl-4 pr-4 py-3 font-body uppercase tracking-widest text-[9px] hover:bg-surface-container transition-all border-l-2 border-transparent">
-      <span class="material-symbols-outlined text-base">article</span> Projects
-    </a>
-    <a href="#skills" class="side-link flex items-center gap-3 text-secondary pl-4 pr-4 py-3 font-body uppercase tracking-widest text-[9px] hover:bg-surface-container transition-all border-l-2 border-transparent">
-      <span class="material-symbols-outlined text-base">architecture</span> Toolkit
-    </a>
-    <a href="#blogs" class="side-link flex items-center gap-3 text-secondary pl-4 pr-4 py-3 font-body uppercase tracking-widest text-[9px] hover:bg-surface-container transition-all border-l-2 border-transparent">
-      <span class="material-symbols-outlined text-base">newspaper</span> Writing
-    </a>
-    <a href="#about" class="side-link flex items-center gap-3 text-secondary pl-4 pr-4 py-3 font-body uppercase tracking-widest text-[9px] hover:bg-surface-container transition-all border-l-2 border-transparent">
-      <span class="material-symbols-outlined text-base">person_search</span> Beyond Data
-    </a>
+    <button id="ham" style="display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none;cursor:pointer;" aria-label="Menu">
+      <span style="width:20px;height:2px;background:#1c1c19;display:block;"></span>
+      <span style="width:20px;height:2px;background:#1c1c19;display:block;"></span>
+      <span style="width:20px;height:2px;background:#1c1c19;display:block;"></span>
+    </button>
   </nav>
-
-  <!-- Resume download at bottom -->
-  <div class="mt-auto px-6 pb-6">
-    <a href="#" class="block text-center border border-primary text-primary text-[10px] uppercase tracking-widest font-body py-2.5 rounded hover:bg-primary hover:text-white transition-all">
-      Download CV
-    </a>
+  <div id="mobile-nav" style="flex-direction:column;padding:0 24px 20px;gap:4px;border-top:1px solid rgba(188,201,200,0.3);background:#fcf9f4;">
+    <a href="#story" class="nav-a mobile-link" style="display:block;padding:10px 0;text-decoration:none;">Story</a>
+    <a href="#work" class="nav-a mobile-link" style="display:block;padding:10px 0;text-decoration:none;">Work</a>
+    <a href="#projects" class="nav-a mobile-link" style="display:block;padding:10px 0;text-decoration:none;">Projects</a>
+    <a href="#writing" class="nav-a mobile-link" style="display:block;padding:10px 0;text-decoration:none;">Writing</a>
+    <a href="#beyond" class="nav-a mobile-link" style="display:block;padding:10px 0;text-decoration:none;">Beyond</a>
+    <a href="#now" class="nav-a mobile-link" style="display:block;padding:10px 0;text-decoration:none;">Now</a>
+    <a href="mailto:kanyavasu7@gmail.com" class="mobile-link" style="display:block;text-align:center;background:#006767;color:#fff;padding:10px;border-radius:999px;margin-top:8px;font-size:13px;text-decoration:none;">Contact</a>
   </div>
-</aside>
+</header>
 
-<!-- ═══════════════════════════════════════
-     MAIN CONTENT
-═══════════════════════════════════════ -->
-<main class="lg:ml-56 pt-16">
+<main>
 
-  <!-- ─── HERO ─── -->
-  <section id="hero" class="grain relative px-8 md:px-16 py-24 md:py-36 flex flex-col md:flex-row items-end justify-between gap-12 max-w-[1200px]">
-    <div class="w-full md:w-3/5">
-      <p class="fade-up delay-1 font-body text-[10px] uppercase tracking-widest text-secondary mb-6">Data & Marketing Analyst · Chennai</p>
-      <h1 class="fade-up delay-2 font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.88] tracking-tighter text-on-surface">
-        Hello. I'm a<br/>
-        <span class="italic text-primary">storyteller</span><br/>
-        who uses <span class="highlight-pill">data</span><br/>as ink.
+<!-- HERO -->
+<section id="hero" style="min-height:100vh;display:flex;align-items:center;padding:100px 40px 60px;max-width:1280px;margin:0 auto;">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:48px;width:100%;">
+    <div style="flex:1;min-width:280px;">
+      <span class="h1 slabel" style="margin-bottom:24px;">Data Analyst · Tamil Nadu, India</span>
+      <h1 class="h2 font-serif" style="font-size:clamp(52px,8vw,96px);font-weight:700;line-height:0.9;letter-spacing:-2px;margin-bottom:24px;">
+        Hi. I'm<br/><span class="c-primary">Kanya.</span>
       </h1>
-      <p class="fade-up delay-3 mt-10 font-serif italic text-xl md:text-2xl text-secondary max-w-lg leading-relaxed">
-        I bridge the gap between numbers and narratives — translating complex analytics into decisions that actually move people.
+      <h2 class="h3 font-serif" style="font-size:clamp(24px,3.5vw,40px);color:#3d4949;font-weight:400;font-style:italic;margin-bottom:20px;">
+        I ask a lot of questions.
+      </h2>
+      <p class="h4" style="font-size:18px;color:#3d4949;max-width:420px;margin-bottom:36px;line-height:1.7;">
+        And data — if you listen carefully — always answers back.
       </p>
-      <div class="fade-up delay-4 mt-10 flex flex-wrap gap-4">
-        <a href="#work" class="bg-primary text-white px-7 py-3 rounded font-body text-xs tracking-wide hover:opacity-90 transition-opacity">See My Work</a>
-        <a href="mailto:kanyavasu7@gmail.com" class="border border-primary text-primary px-7 py-3 rounded font-body text-xs tracking-wide hover:bg-primary hover:text-white transition-all">Get In Touch</a>
+      <div class="h5" style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+        <a href="#projects" style="background:#006767;color:#fff;padding:12px 24px;border-radius:999px;font-size:14px;font-weight:500;text-decoration:none;">See My Work</a>
+        <a href="mailto:kanyavasu7@gmail.com" style="border:1.5px solid #006767;color:#006767;padding:12px 24px;border-radius:999px;font-size:14px;font-weight:500;text-decoration:none;">Let's Talk</a>
       </div>
-      <div class="fade-up delay-4 mt-8 flex gap-6 items-center">
-        <a href="https://linkedin.com/in/kanya-v" target="_blank" class="text-[10px] uppercase tracking-widest text-secondary hover:text-primary transition-colors font-body underline underline-offset-4">LinkedIn</a>
-        <a href="https://github.com/kanyavasudev" target="_blank" class="text-[10px] uppercase tracking-widest text-secondary hover:text-primary transition-colors font-body underline underline-offset-4">GitHub</a>
-        <a href="https://kanya7.substack.com" target="_blank" class="text-[10px] uppercase tracking-widest text-secondary hover:text-primary transition-colors font-body underline underline-offset-4">Substack</a>
+      <div class="h5" style="display:flex;flex-wrap:wrap;gap:24px;">
+        <a href="https://linkedin.com/in/kanya-v" target="_blank" class="font-mono c-outline" style="font-size:11px;text-decoration:underline;text-underline-offset:4px;">LinkedIn</a>
+        <a href="https://github.com/kanyavasudev" target="_blank" class="font-mono c-outline" style="font-size:11px;text-decoration:underline;text-underline-offset:4px;">GitHub</a>
+        <a href="https://kanya7.substack.com" target="_blank" class="font-mono c-outline" style="font-size:11px;text-decoration:underline;text-underline-offset:4px;">Substack</a>
+        <a href="mailto:kanyavasu7@gmail.com" class="font-mono c-outline" style="font-size:11px;text-decoration:underline;text-underline-offset:4px;">Email</a>
       </div>
     </div>
-
     <!-- Photo -->
-    <div class="w-full md:w-[320px] flex-shrink-0">
-      <div class="aspect-[3/4] bg-surface-container-low overflow-hidden rounded relative photo-placeholder">
-      <img src="kanya.jpg" alt="Kanya V" class="w-full h-full object-cover object-top" />
-        <div class="absolute bottom-5 left-5 right-5">
-          <p class="font-body text-[9px] uppercase tracking-widest mb-1 opacity-50">Currently open to</p>
-          <p class="font-serif italic text-base text-on-surface">Data & Consumer Insights roles</p>
-        </div>
-      </div>
+    <div class="h5 photo-box">
+     <img src="kanya.jpg" alt="Kanya V" style="width:100%; height:auto; border-radius:10px;">
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ─── STATS BAR ─── -->
-  <section class="reveal px-8 md:px-16 py-10 bg-surface-container border-y border-outline-variant/20">
-    <div class="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="text-center">
-        <p class="font-serif text-4xl md:text-5xl italic text-primary">2+</p>
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary mt-1">Years Experience</p>
-      </div>
-      <div class="text-center">
-        <p class="font-serif text-4xl md:text-5xl italic text-primary">40%</p>
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary mt-1">Organic Traffic Growth</p>
-      </div>
-      <div class="text-center">
-        <p class="font-serif text-4xl md:text-5xl italic text-primary">15×</p>
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary mt-1">Client Follower Growth</p>
-      </div>
-      <div class="text-center">
-        <p class="font-serif text-4xl md:text-5xl italic text-primary">50K+</p>
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary mt-1">Records Analyzed</p>
-      </div>
+<!-- Scroll cue -->
+<div style="display:flex;justify-content:center;padding-bottom:40px;">
+  <a href="#story" class="bounce font-mono c-outline" style="font-size:11px;display:flex;align-items:center;gap:4px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">
+    keep reading <span class="material-symbols-outlined" style="font-size:16px;">south</span>
+  </a>
+</div>
+
+<!-- Stats bar -->
+<div style="background:#f0ede9;border-top:1px solid rgba(188,201,200,0.3);border-bottom:1px solid rgba(188,201,200,0.3);padding:40px 40px;">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;">
+    <div class="reveal"><p class="font-serif c-primary" style="font-size:42px;font-weight:700;margin:0;">2+</p><p class="font-mono c-outline" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin:4px 0 0;">Years Exp.</p></div>
+    <div class="reveal d1"><p class="font-serif c-primary" style="font-size:42px;font-weight:700;margin:0;">40%</p><p class="font-mono c-outline" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin:4px 0 0;">Traffic Growth</p></div>
+    <div class="reveal d2"><p class="font-serif c-primary" style="font-size:42px;font-weight:700;margin:0;">15×</p><p class="font-mono c-outline" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin:4px 0 0;">Client Followers</p></div>
+    <div class="reveal d3"><p class="font-serif c-primary" style="font-size:42px;font-weight:700;margin:0;">50K+</p><p class="font-mono c-outline" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin:4px 0 0;">Records Analyzed</p></div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story" style="padding:100px 40px;background:#f6f3ee;">
+  <div style="max-width:680px;margin:0 auto;">
+    <span class="slabel reveal">The Prologue</span>
+    <h2 class="reveal font-serif" style="font-size:clamp(22px,3vw,30px);font-weight:600;margin-bottom:36px;line-height:1.4;">
+      I came for the marketing.<br/>I stayed for the data.
+    </h2>
+    <div style="font-size:17px;color:#3d4949;line-height:1.8;">
+      <p class="reveal" style="margin-bottom:20px;">I started in computer science, curious about how technology and people connect. My first real job put me inside a marketing team — and I fell in love with something I didn't expect: the numbers underneath every decision. <em>why</em> the numbers moved than actually moving them.</p>
+      <p class="reveal" style="margin-bottom:20px;">Every campaign had data. Every click was a signal. Every dashboard was someone trying to understand what humans actually wanted. I realized I was spending more time asking why the metrics moved than anything else — and honestly, I didn't want to stop.</p>
+      <p class="reveal" style="margin-bottom:20px;">Marketing gave me something most data analysts don't have — I learned how businesses think, how customers feel, and how decisions actually get made in real organizations. I sat in rooms with CEOs and COOs, presented findings, and learned to make complex things simple for people who needed answers fast.</p>
+      <p class="reveal" style="margin-bottom:0;">Then I started learning Python. Then SQL. Then Power BI. Not because someone told me to — because the questions I was encountering at work were getting bigger than Excel could answer. And I wanted to keep up with my own curiosity.</p>
     </div>
-  </section>
 
-  <!-- ─── MY STORY (Timeline) ─── -->
-  <section id="story" class="px-8 md:px-16 py-24 bg-surface-container-low">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="reveal mb-6">
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary">Where I've been</p>
-      </div>
-      <h2 class="reveal font-serif text-5xl mb-6 italic">My Story</h2>
-      <p class="reveal font-serif italic text-lg text-on-surface-variant max-w-2xl leading-relaxed mb-16">
-        My career didn't start in a lab — it started with a question. The first time I opened Google Analytics I wasn't looking at numbers. I was looking at <em>human behaviour</em>. Where people came from. What made them stay. What made them leave.
+    <blockquote class="reveal" style="margin:56px 0;padding-left:8px;">
+      <span class="bq-bar"></span>
+      <p class="font-serif" style="font-size:clamp(26px,3.5vw,38px);font-style:italic;color:#1c1c19;line-height:1.3;margin:0;">
+        "Marketing showed me the door. Analytics showed me the castle behind it."
       </p>
+    </blockquote>
 
-      <!-- Timeline -->
-      <div class="space-y-0">
+    <p class="reveal" style="font-size:17px;color:#3d4949;line-height:1.8;margin:0;">Now I build projects about why humans do what they do. I analyze real data about real people. And I'm looking for a team where that kind of curiosity is actually useful.</p>
+  </div>
+</section>
 
-        <div class="reveal grid grid-cols-1 md:grid-cols-[160px_1fr] border-t border-outline-variant/30 py-10 group hover:bg-surface-container transition-colors px-4 rounded">
-          <span class="font-body text-[10px] uppercase tracking-widest text-secondary pt-1">May 2025 — Present</span>
-          <div>
-            <div class="flex flex-wrap items-center gap-3 mb-3">
-              <h3 class="font-serif text-2xl italic">Freelance Data & Marketing Analyst</h3>
-              <span class="bg-secondary-container text-on-secondary-container px-3 py-0.5 rounded-full text-[9px] uppercase tracking-widest font-body">Self-Employed</span>
-            </div>
-            <p class="text-on-surface-variant leading-relaxed max-w-xl mb-4">Independent consulting — campaign analytics, KPI reporting, and dashboard building. Grew an aluminium windows manufacturer from 100 to 1,500 Instagram followers (15× growth) through data-driven content strategy.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">Excel</span>
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">KPI Dashboards</span>
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">Campaign Analytics</span>
-            </div>
-          </div>
-        </div>
+<!-- WORK -->
+<section id="work" style="padding:100px 40px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <span class="slabel reveal">Where I've Worked</span>
+    <h2 class="reveal font-serif" style="font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:60px;">Career Journey</h2>
 
-        <div class="reveal grid grid-cols-1 md:grid-cols-[160px_1fr] border-t border-outline-variant/30 py-10 group hover:bg-surface-container transition-colors px-4 rounded">
-          <span class="font-body text-[10px] uppercase tracking-widest text-secondary pt-1">Jan 2024 — Mar 2025</span>
-          <div>
-            <div class="flex flex-wrap items-center gap-3 mb-3">
-              <h3 class="font-serif text-2xl italic">Digital Marketing Executive</h3>
-              <span class="bg-secondary-container text-on-secondary-container px-3 py-0.5 rounded-full text-[9px] uppercase tracking-widest font-body">StrongBox IT</span>
-            </div>
-            <p class="text-on-surface-variant leading-relaxed max-w-xl mb-4">Solely managed the entire marketing and analytics function — reporting directly to the CEO, coordinating across technical and sales teams. Increased organic traffic 40%, contributed to 25% inbound lead growth. Took over the full function at 6 months experience when the senior left, and maintained and grew every KPI independently.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">GA4</span>
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">SEO Analysis</span>
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">Power BI</span>
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">Competitor Benchmarking</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal grid grid-cols-1 md:grid-cols-[160px_1fr] border-t border-b border-outline-variant/30 py-10 group hover:bg-surface-container transition-colors px-4 rounded">
-          <span class="font-body text-[10px] uppercase tracking-widest text-secondary pt-1">Jul 2023 — Dec 2023</span>
-          <div>
-            <div class="flex flex-wrap items-center gap-3 mb-3">
-              <h3 class="font-serif text-2xl italic">Data Reporting Intern</h3>
-              <span class="bg-secondary-container text-on-secondary-container px-3 py-0.5 rounded-full text-[9px] uppercase tracking-widest font-body">StrongBox IT</span>
-            </div>
-            <p class="text-on-surface-variant leading-relaxed max-w-xl mb-4">Startup environment — analytics, reporting, and cross-team coordination from day one. Presented GA4 traffic findings directly to the COO. Cleaned and validated 10,000+ records and supported weekly performance reporting across 4 platforms.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">GA4</span>
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">Data Cleaning</span>
-              <span class="bg-primary-fixed text-on-primary-fixed text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">Reporting</span>
-            </div>
-          </div>
-        </div>
-
+    <!-- Job 1 -->
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:40px 0;border-top:1px solid rgba(188,201,200,0.35);">
+      <div>
+        <p class="font-mono c-primary" style="font-size:11px;font-weight:500;">May 2025 — Present</p>
+        <h3 class="font-serif" style="font-size:19px;font-weight:600;margin:8px 0 4px;">Freelance</h3>
+        <p style="font-size:13px;color:#6d7979;margin:0;">Self-Employed</p>
       </div>
-
-      <!-- Education -->
-      <div class="reveal mt-16 pt-10 border-t border-outline-variant/20">
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary mb-4">Education</p>
-        <div class="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h3 class="font-serif text-xl italic">B.E. Computer Science Engineering</h3>
-            <p class="text-on-surface-variant text-sm mt-1">Saveetha Engineering College, Chennai</p>
-          </div>
-          <div class="text-right">
-            <p class="font-body text-[10px] uppercase tracking-widest text-secondary">2018 – 2022</p>
-            <p class="font-serif italic text-lg text-primary mt-1">CGPA 8.15 / 10</p>
-          </div>
+      <div>
+        <p style="font-size:16px;color:#3d4949;line-height:1.75;margin-bottom:16px;">I work independently with two businesses — a manufacturing company and a digital services startup. One traditional, one tech-forward. Both completely different problems.I build KPI trackers, analyze campaign performance, and turn weekly data into decisions teams can actually act on. I also sit between clients and developers — understanding what the business needs and making sure the right thing gets built.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="pill">Campaign Analytics</span><span class="pill">KPI Dashboards</span><span class="pill">Excel</span><span class="pill">Content Strategy</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ─── PROJECTS ─── -->
-  <section id="work" class="py-24 overflow-hidden">
-    <div class="px-8 md:px-16 mb-12 reveal">
-      <p class="font-body text-[10px] uppercase tracking-widest text-secondary mb-3">What I've built</p>
-      <div class="flex justify-between items-end">
-        <h2 class="font-serif text-5xl italic">Selected Work</h2>
-        <a href="https://github.com/kanyavasudev" target="_blank" class="hidden md:flex items-center gap-1 font-body text-[10px] uppercase tracking-widest text-secondary hover:text-primary transition-colors">
-          View all on GitHub <span class="material-symbols-outlined text-sm ml-1">north_east</span>
-        </a>
+    <!-- Job 2 -->
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:40px 0;border-top:1px solid rgba(188,201,200,0.35);">
+      <div>
+        <p class="font-mono c-primary" style="font-size:11px;font-weight:500;">Jan 2024 — Mar 2025</p>
+        <h3 class="font-serif" style="font-size:19px;font-weight:600;margin:8px 0 4px;">Digital Marketing Executive</h3>
+        <p style="font-size:13px;color:#6d7979;margin:0;">StrongBox IT, Chennai</p>
+      </div>
+      <div>
+        <p style="font-size:16px;color:#3d4949;line-height:1.75;margin-bottom:16px;">Ran the entire marketing and analytics function reporting directly to the CEO. Maintained GA4 dashboards tracking 15+ KPIs daily. Spotted a location keyword opportunity nobody had noticed — proposed landing pages for it — and it contributed to 25% more inbound leads. Grew organic traffic 40% through data-backed SEO decisions. When the senior left, I took over everything independently and kept growing every metric.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="pill">GA4</span><span class="pill">SEO Analysis</span><span class="pill">Power BI</span><span class="pill">Competitor Benchmarking</span>
+        </div>
       </div>
     </div>
 
-    <!-- Horizontal scroll -->
-    <div class="flex overflow-x-auto hide-scrollbar gap-8 px-8 md:px-16 pb-8 snap-x snap-mandatory">
+    <!-- Job 3 -->
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:40px 0;border-top:1px solid rgba(188,201,200,0.35);border-bottom:1px solid rgba(188,201,200,0.35);">
+      <div>
+        <p class="font-mono c-primary" style="font-size:11px;font-weight:500;">Jul 2023 — Dec 2023</p>
+        <h3 class="font-serif" style="font-size:19px;font-weight:600;margin:8px 0 4px;">Intern</h3>
+        <p style="font-size:13px;color:#6d7979;margin:0;">StrongBox IT, Chennai</p>
+      </div>
+      <div>
+        <p style="font-size:16px;color:#3d4949;line-height:1.75;margin-bottom:16px;">Where I learned that asking the right question of the right data changes what a business decides to do next. Cleaned and validated 10,000+ records. Reported to the COO on traffic drops and ranking issues. Coordinated across technical, sales, and marketing teams. Six months into my career — presenting findings to a COO. That built a confidence in my analysis I've never lost.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="pill">GA4</span><span class="pill">Data Cleaning</span><span class="pill">Reporting</span><span class="pill">Stakeholder Comms</span>
+        </div>
+      </div>
+    </div>
 
-      <!-- Project 1: Chennai Metro -->
-      <div class="project-card reveal flex-none w-[320px] md:w-[480px] snap-start">
-        <a href="https://github.com/kanyavasudev/cmrl-analysis" target="_blank" class="block">
-          <div class="aspect-video bg-surface-container overflow-hidden rounded mb-5 relative">
-            <div class="project-img w-full h-full bg-gradient-to-br from-[#576147] to-[#3d4733] flex items-center justify-center">
-              <div class="text-center text-white px-6">
-                <span class="material-symbols-outlined text-5xl mb-3 opacity-70">train</span>
-                <p class="font-serif italic text-lg opacity-90">Chennai Metro</p>
-                <p class="font-body text-[10px] uppercase tracking-widest opacity-60 mt-1">Ridership Analysis</p>
-              </div>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span class="bg-white/90 text-primary text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">Government Data</span>
-            </div>
+    <!-- Education -->
+    <div class="reveal" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-top:48px;padding-top:36px;border-top:1px solid rgba(188,201,200,0.2);">
+      <div>
+        <span class="slabel" style="margin-bottom:8px;">Education</span>
+        <h3 class="font-serif" style="font-size:20px;font-weight:600;margin:0 0 4px;">B.E. Computer Science Engineering</h3>
+        <p style="font-size:14px;color:#6d7979;margin:0;">Saveetha Engineering College, Chennai · 2018–2022</p>
+      </div>
+      <div style="text-align:right;">
+        <p class="font-serif c-primary" style="font-size:38px;font-weight:700;margin:0;">8.15</p>
+        <p class="font-mono c-outline" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin:4px 0 0;">CGPA / 10</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding:100px 40px;background:#f0ede9;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <span class="slabel reveal">Questions I couldn't stop thinking about</span>
+    <h2 class="reveal font-serif" style="font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:60px;">Data Case Studies</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:28px;">
+
+      <!-- Loneliness -->
+      <div class="reveal" style="background:#fcf9f4;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
+        <img src="loneliness-analysis.png" alt="Loneliness Pattern Analysis" class="pimg"/>
+        <div style="padding:32px;">
+          <span class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;">Human Behavior</span>
+          <h3 class="font-serif" style="font-size:22px;font-weight:700;margin:0 0 8px;">Loneliness Pattern Analysis</h3>
+          <p class="font-serif" style="font-style:italic;color:#6d7979;font-size:14px;margin:0 0 16px;">"What does the data actually say about who feels alone — and why?"</p>
+          <p style="font-size:14px;color:#3d4949;line-height:1.7;margin-bottom:20px;">Explored loneliness across 25K+ people in Europe. Gen Z scored highest. Students were the loneliest group. What I found didn't match the stereotypes — behind every row is a real human experience.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+            <span class="pill">Python</span><span class="pill">Power BI</span><span class="pill">EDA</span><span class="pill">Excel</span>
           </div>
-          <div class="flex justify-between items-start">
-            <div class="flex-1 pr-4">
-              <h4 class="font-serif text-2xl italic group-hover:text-primary">Chennai Metro Ridership Analysis</h4>
-              <p class="text-on-surface-variant text-sm mt-2 leading-relaxed">3 years of official CMRL open data — found a complete digital payment shift and traced a 17% surge in smart card adoption to a single government policy.</p>
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">Python</span>
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">MySQL</span>
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">Power BI</span>
-              </div>
-            </div>
-            <span class="flex-shrink-0 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[9px] uppercase tracking-widest font-body">EDA</span>
-          </div>
-        </a>
+          <a href="https://github.com/kanyavasudev" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#006767;font-weight:600;font-size:13px;text-decoration:none;">
+            View on GitHub <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Project 2: Library -->
-      <div class="project-card reveal flex-none w-[320px] md:w-[480px] snap-start">
-        <a href="https://library-management-kanya.streamlit.app" target="_blank" class="block">
-          <div class="aspect-video bg-surface-container overflow-hidden rounded mb-5 relative">
-            <div class="project-img w-full h-full bg-gradient-to-br from-[#6a5c44] to-[#4a3f2f] flex items-center justify-center">
-              <div class="text-center text-white px-6">
-                <span class="material-symbols-outlined text-5xl mb-3 opacity-70">library_books</span>
-                <p class="font-serif italic text-lg opacity-90">Library System</p>
-                <p class="font-body text-[10px] uppercase tracking-widest opacity-60 mt-1">Full Stack Web App</p>
-              </div>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span class="bg-white/90 text-primary text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">Live App</span>
-            </div>
+      <!-- Chennai Metro -->
+      <div class="reveal d1" style="background:#fcf9f4;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
+        <img src="cmrl-analysis.png" alt="Chennai Metro Ridership Analysis" class="pimg"/>
+        <div style="padding:32px;">
+          <span class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;">Urban Mobility</span>
+          <h3 class="font-serif" style="font-size:22px;font-weight:700;margin:0 0 8px;">Chennai Metro Ridership Analysis</h3>
+          <p class="font-serif" style="font-style:italic;color:#6d7979;font-size:14px;margin:0 0 16px;">"How does a city change its habits — and can the data show exactly when it happened?"</p>
+          <p style="font-size:14px;color:#3d4949;line-height:1.7;margin-bottom:20px;">3 years of official government data. Paper tokens collapsed 65% → 0.40%. Found the exact month a government policy caused a 17% surge in smart card adoption using SQL trend analysis.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+            <span class="pill">Python</span><span class="pill">MySQL</span><span class="pill">Power BI</span><span class="pill">Open Data</span>
           </div>
-          <div class="flex justify-between items-start">
-            <div class="flex-1 pr-4">
-              <h4 class="font-serif text-2xl italic">Library Management System</h4>
-              <p class="text-on-surface-variant text-sm mt-2 leading-relaxed">End-to-end delivery — gathered requirements, designed a relational MySQL database with 6 tables, built a Streamlit interface, and deployed live on Railway + Streamlit Cloud.</p>
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">Python</span>
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">Streamlit</span>
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">MySQL</span>
-              </div>
-            </div>
-            <span class="flex-shrink-0 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[9px] uppercase tracking-widest font-body">Full Stack</span>
-          </div>
-        </a>
+          <a href="https://github.com/kanyavasudev/cmrl-analysis" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#006767;font-weight:600;font-size:13px;text-decoration:none;">
+            View on GitHub <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Project 3: Ride Booking -->
-      <div class="project-card reveal flex-none w-[320px] md:w-[480px] snap-start">
-        <a href="https://github.com/kanyavasudev/Ride-Booking-Analysis-Python-EDA" target="_blank" class="block">
-          <div class="aspect-video bg-surface-container overflow-hidden rounded mb-5 relative">
-            <div class="project-img w-full h-full bg-gradient-to-br from-[#896f7f] to-[#5a4554] flex items-center justify-center">
-              <div class="text-center text-white px-6">
-                <span class="material-symbols-outlined text-5xl mb-3 opacity-70">directions_car</span>
-                <p class="font-serif italic text-lg opacity-90">Ride Booking</p>
-                <p class="font-body text-[10px] uppercase tracking-widest opacity-60 mt-1">Demand Analysis</p>
-              </div>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span class="bg-white/90 text-primary text-[9px] px-2.5 py-1 rounded font-body uppercase tracking-widest">50K+ Records</span>
-            </div>
+      <!-- Ride Booking -->
+      <div class="reveal" style="background:#fcf9f4;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
+        <img src="uber-rides-analysis.png" alt="Ride Booking Demand Analysis" class="pimg"/>
+        <div style="padding:32px;">
+          <span class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;">Demand Forecasting</span>
+          <h3 class="font-serif" style="font-size:22px;font-weight:700;margin:0 0 8px;">Ride Booking Demand Analysis</h3>
+          <p class="font-serif" style="font-style:italic;color:#6d7979;font-size:14px;margin:0 0 16px;">"What's really driving cancellations in 50,000+ bookings?"</p>
+          <p style="font-size:14px;color:#3d4949;line-height:1.7;margin-bottom:20px;">Analyzed 50,000+ booking records to uncover peak demand hours, cancellation patterns, and behavioral signals hiding in the noise. UPI dominated at 45% of all payments.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+            <span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">Matplotlib</span><span class="pill">EDA</span>
           </div>
-          <div class="flex justify-between items-start">
-            <div class="flex-1 pr-4">
-              <h4 class="font-serif text-2xl italic">Ride Booking Demand Analysis</h4>
-              <p class="text-on-surface-variant text-sm mt-2 leading-relaxed">Analyzed 50,000+ booking records to uncover peak demand hours, cancellation drivers, and behavioral patterns using Python and Pandas.</p>
-              <div class="flex flex-wrap gap-2 mt-3">
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">Python</span>
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">Pandas</span>
-                <span class="text-[9px] border border-outline-variant px-2 py-0.5 rounded font-body uppercase tracking-widest text-secondary">Matplotlib</span>
-              </div>
-            </div>
-            <span class="flex-shrink-0 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[9px] uppercase tracking-widest font-body">Python EDA</span>
+          <a href="https://github.com/kanyavasudev/Ride-Booking-Analysis-Python-EDA" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#006767;font-weight:600;font-size:13px;text-decoration:none;">
+            View on GitHub <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Library -->
+      <div class="reveal d1" style="background:#fcf9f4;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
+        <img src="library-management.png" alt="Library Management System" class="pimg"/>
+        <div style="padding:32px;">
+          <span class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;">Systems Design</span>
+          <h3 class="font-serif" style="font-size:22px;font-weight:700;margin:0 0 8px;">Library Management System</h3>
+          <p class="font-serif" style="font-style:italic;color:#6d7979;font-size:14px;margin:0 0 16px;">"Can I build a full production system from scratch and actually deploy it?"</p>
+          <p style="font-size:14px;color:#3d4949;line-height:1.7;margin-bottom:20px;">Full working web application with 6 interconnected MySQL tables. Live on Railway and Streamlit Cloud with real-time CRUD operations. It works. Anyone can use it right now.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+            <span class="pill">Python</span><span class="pill">Streamlit</span><span class="pill">MySQL</span><span class="pill">Railway</span>
           </div>
-        </a>
+          <div style="display:flex;gap:20px;">
+            <a href="https://library-management-kanya.streamlit.app" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#006767;font-weight:600;font-size:13px;text-decoration:none;">
+              Live App <span class="material-symbols-outlined" style="font-size:16px;">open_in_new</span>
+            </a>
+            <a href="https://github.com/kanyavasudev/Library_Management_System" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#6d7979;font-size:13px;text-decoration:none;">
+              GitHub <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+            </a>
+          </div>
+        </div>
       </div>
 
     </div>
-    <p class="px-8 md:px-16 mt-2 font-body text-[10px] text-secondary uppercase tracking-widest">← Scroll to explore →</p>
-  </section>
 
-  <!-- ─── SKILLS / TOOLKIT ─── -->
-  <section id="skills" class="px-8 md:px-16 py-24 bg-surface-container-high">
-    <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <!-- Coming soon -->
+    <div class="reveal" style="margin-top:28px;border:2px dashed rgba(188,201,200,0.6);border-radius:14px;padding:40px;display:flex;align-items:center;gap:24px;">
+      <span class="material-symbols-outlined" style="font-size:48px;color:#bcc9c8;">pending</span>
+      <div>
+        <span class="font-mono c-secondary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:6px;">Coming Soon</span>
+        <h3 class="font-serif" style="font-size:20px;font-weight:600;color:#3d4949;margin:0 0 4px;">Upcoming Projects</h3>
+        <p style="font-size:14px;color:#6d7979;margin:0;">The next question. Currently being answered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="padding:100px 40px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <span class="slabel reveal">Tools I Think With</span>
+    <h2 class="reveal font-serif" style="font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:56px;">The Toolkit</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;flex-wrap:wrap;">
       <div class="reveal">
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary mb-4">What I work with</p>
-        <h2 class="font-serif text-5xl mb-6 italic">The Toolkit</h2>
-        <p class="text-on-surface-variant leading-relaxed max-w-md">
-          I came from marketing, taught myself the data stack, and never stopped. Every tool here was learned by solving a real problem — not from a tutorial.
-        </p>
-        <!-- Certifications -->
-        <div class="mt-10 space-y-3">
-          <p class="font-body text-[10px] uppercase tracking-widest text-secondary">Certifications</p>
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-primary text-base">verified</span>
-            <span class="font-serif italic">Data Analyst Certification — ACTE Technologies, 2026</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-primary text-base">verified</span>
-            <span class="font-serif italic">Data Analytics Job Simulation — Deloitte Australia (Forage), 2026</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-primary text-base">verified</span>
-            <span class="font-serif italic">Fundamentals of Digital Marketing — Google, 2023</span>
-          </div>
+        <p class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Data & Analysis</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="pill">Python</span><span class="pill">Pandas · NumPy</span><span class="pill">SQL · MySQL</span><span class="pill">Matplotlib · Seaborn</span><span class="pill">Power BI</span><span class="pill">Excel (Advanced)</span><span class="pill">GA4</span><span class="pill">Jupyter Notebook</span><span class="pill">Streamlit</span><span class="pill">Git · GitHub</span>
         </div>
       </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <div class="reveal p-6 bg-surface-container-lowest rounded flex flex-col items-center justify-center text-center hover:shadow-lg transition-all border border-outline-variant/10 group cursor-default">
-          <span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">terminal</span>
-          <span class="font-body text-[9px] uppercase tracking-widest font-bold">Python</span>
-          <span class="font-body text-[9px] text-secondary mt-0.5">Pandas · Numpy</span>
+      <div class="reveal d1">
+        <p class="font-mono c-secondary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Skills That Actually Matter</p>
+        <ul style="font-size:16px;color:#3d4949;list-style:none;padding:0;margin:0;line-height:1;display:flex;flex-direction:column;gap:14px;">
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> Translating data into plain human language</li>
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> Asking the question behind the question</li>
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> Presenting to non-technical stakeholders</li>
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> Working independently without losing direction</li>
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> Finding patterns nobody thought to look for</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Certifications -->
+    <div class="reveal" style="margin-top:56px;padding-top:40px;border-top:1px solid rgba(188,201,200,0.3);">
+      <p class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:24px;">Certifications</p>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span class="material-symbols-outlined c-primary" style="font-size:20px;margin-top:2px;">verified</span>
+          <div><p style="font-size:15px;font-weight:500;margin:0;">Data Analytics Job Simulation — Deloitte Australia (Forage)</p><p class="font-mono c-outline" style="font-size:11px;margin:3px 0 0;">March 2026</p></div>
         </div>
-        <div class="reveal p-6 bg-surface-container-lowest rounded flex flex-col items-center justify-center text-center hover:shadow-lg transition-all border border-outline-variant/10 group cursor-default">
-          <span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">database</span>
-          <span class="font-body text-[9px] uppercase tracking-widest font-bold">SQL</span>
-          <span class="font-body text-[9px] text-secondary mt-0.5">MySQL · Workbench</span>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span class="material-symbols-outlined c-primary" style="font-size:20px;margin-top:2px;">verified</span>
+          <div><p style="font-size:15px;font-weight:500;margin:0;">Data Analyst Certification — ACTE Technologies</p><p class="font-mono c-outline" style="font-size:11px;margin:3px 0 0;">February 2026</p></div>
         </div>
-        <div class="reveal p-6 bg-surface-container-lowest rounded flex flex-col items-center justify-center text-center hover:shadow-lg transition-all border border-outline-variant/10 group cursor-default">
-          <span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">bar_chart</span>
-          <span class="font-body text-[9px] uppercase tracking-widest font-bold">Power BI</span>
-          <span class="font-body text-[9px] text-secondary mt-0.5">Dashboards · KPIs</span>
-        </div>
-        <div class="reveal p-6 bg-surface-container-lowest rounded flex flex-col items-center justify-center text-center hover:shadow-lg transition-all border border-outline-variant/10 group cursor-default">
-          <span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">monitoring</span>
-          <span class="font-body text-[9px] uppercase tracking-widest font-bold">GA4</span>
-          <span class="font-body text-[9px] text-secondary mt-0.5">Analytics · Funnels</span>
-        </div>
-        <div class="reveal p-6 bg-surface-container-lowest rounded flex flex-col items-center justify-center text-center hover:shadow-lg transition-all border border-outline-variant/10 group cursor-default">
-          <span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">table_chart</span>
-          <span class="font-body text-[9px] uppercase tracking-widest font-bold">Excel</span>
-          <span class="font-body text-[9px] text-secondary mt-0.5">Pivot · VLOOKUP</span>
-        </div>
-        <div class="reveal p-6 bg-surface-container-lowest rounded flex flex-col items-center justify-center text-center hover:shadow-lg transition-all border border-outline-variant/10 group cursor-default">
-          <span class="material-symbols-outlined text-3xl mb-3 text-primary group-hover:scale-110 transition-transform">history_edu</span>
-          <span class="font-body text-[9px] uppercase tracking-widest font-bold">Storytelling</span>
-          <span class="font-body text-[9px] text-secondary mt-0.5">Data Narratives</span>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span class="material-symbols-outlined c-primary" style="font-size:20px;margin-top:2px;">verified</span>
+          <div><p style="font-size:15px;font-weight:500;margin:0;">Fundamentals of Digital Marketing — Google</p><p class="font-mono c-outline" style="font-size:11px;margin:3px 0 0;">2023</p></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ─── BLOGS / DISPATCHES ─── -->
-  <section id="blogs" class="px-8 md:px-16 py-24">
-    <div class="max-w-[1200px] mx-auto">
-      <div class="reveal mb-4">
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary">My writing</p>
-      </div>
-      <h2 class="reveal font-serif text-5xl italic mb-3">Dispatches</h2>
-      <p class="reveal text-secondary font-serif italic mb-14">I write about data, human behaviour, and everything in between.</p>
+<!-- WRITING -->
+<section id="writing" style="padding:100px 40px;background:#f6f3ee;">
+  <div style="max-width:800px;margin:0 auto;">
+    <span class="slabel reveal">Things I Wrote Down</span>
+    <h2 class="reveal font-serif" style="font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:12px;">Narrative & Thoughts</h2>
+    <p class="reveal font-serif" style="font-size:20px;font-style:italic;color:#3d4949;margin-bottom:48px;max-width:500px;">Sometimes a question is too big for a dashboard. So I write.</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <a href="https://kanya7.substack.com" target="_blank" class="reveal group block border-l-2 border-outline-variant hover:border-primary pl-8 py-4 transition-colors">
-          <span class="font-body text-[9px] uppercase tracking-widest text-secondary mb-4 block">Substack · Weekly</span>
-          <h3 class="font-serif text-3xl group-hover:text-primary transition-colors italic">The Curious Analyst</h3>
-          <p class="mt-4 text-on-surface-variant text-sm leading-relaxed">Weekly essays on data, consumer behaviour, and the stories hiding inside spreadsheets. Written for humans, not dashboards.</p>
-          <div class="mt-6 flex items-center gap-2 text-primary font-body font-bold text-[10px] uppercase tracking-widest">
-            Read on Substack <span class="material-symbols-outlined text-sm">north_east</span>
-          </div>
-        </a>
-
-        <a href="https://medium.com/@kanya7" target="_blank" class="reveal group block border-l-2 border-outline-variant hover:border-primary pl-8 py-4 transition-colors">
-          <span class="font-body text-[9px] uppercase tracking-widest text-secondary mb-4 block">Medium · Technical</span>
-          <h3 class="font-serif text-3xl group-hover:text-primary transition-colors italic">Data in Plain English</h3>
-          <p class="mt-4 text-on-surface-variant text-sm leading-relaxed">Tutorials, analyses, and walkthroughs on Python, SQL, and real-world data problems — written the way I wish someone had written them for me.</p>
-          <div class="mt-6 flex items-center gap-2 text-primary font-body font-bold text-[10px] uppercase tracking-widest">
-            Read on Medium <span class="material-symbols-outlined text-sm">north_east</span>
-          </div>
-        </a>
-      </div>
+    <div class="reveal" style="margin-bottom:40px;border-radius:12px;overflow:hidden;">
+      <img src="writing.png" alt="Writing" style="width:100%;height:180px;object-fit:cover;object-position:center;display:block;border-radius:12px;"/>
     </div>
-  </section>
 
-  <!-- ─── THE CURATOR BEYOND DATA ─── -->
-  <section id="about" class="px-8 md:px-16 py-24 bg-surface">
-    <div class="max-w-[1200px] mx-auto">
-      <div class="reveal mb-12">
-        <p class="font-body text-[10px] uppercase tracking-widest text-secondary mb-3">Who I am beyond the work</p>
-        <h2 class="font-serif text-5xl italic">The Curator Beyond Data</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <!-- Image -->
-        <div class="md:col-span-4 aspect-square bg-surface-container-low rounded overflow-hidden reveal">
-          <div class="w-full h-full flex items-center justify-center photo-placeholder">
-            <div class="text-center px-6">
-              <span class="material-symbols-outlined text-4xl opacity-30 mb-2 block">auto_stories</span>
-              <p class="font-serif italic text-sm opacity-40">Books &amp; quiet mornings</p>
-            </div>
+    <div>
+      <a href="https://kanya7.substack.com" target="_blank" style="text-decoration:none;">
+        <div class="wrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;">
+            <span class="font-mono c-outline" style="font-size:11px;min-width:60px;">Substack</span>
+            <h3 class="font-serif" style="font-size:20px;font-weight:600;margin:0;color:#1c1c19;">What I Learned from Analyzing Loneliness Data</h3>
           </div>
+          <span class="font-mono" style="font-size:10px;color:#006767;border:1px solid rgba(0,103,103,0.3);padding:5px 14px;border-radius:999px;white-space:nowrap;">Read →</span>
         </div>
-
-        <!-- Content -->
-        <div class="md:col-span-8 bg-surface-container-low p-10 md:p-12 rounded reveal">
-          <p class="font-serif italic text-lg text-on-surface-variant leading-relaxed mb-10">
-            When I'm not interrogating datasets, I'm reading, listening, and asking questions that have nothing to do with work — until they suddenly do.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
-            <div>
-              <h4 class="font-body text-[9px] uppercase tracking-widest font-bold mb-5 text-primary">Reading List</h4>
-              <ul class="font-serif italic text-base space-y-3 text-on-surface-variant">
-                <li>— Thinking, Fast and Slow</li>
-                <li>— The Design of Everyday Things</li>
-                <li>— Predictably Irrational</li>
-                <li>— Surrounded by Idiots</li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-body text-[9px] uppercase tracking-widest font-bold mb-5 text-primary">On the Podcast Queue</h4>
-              <ul class="font-serif italic text-base space-y-3 text-on-surface-variant">
-                <li>— Hidden Brain</li>
-                <li>— How I Built This</li>
-                <li>— Lex Fridman Podcast</li>
-                <li>— The Knowledge Project</li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-body text-[9px] uppercase tracking-widest font-bold mb-5 text-primary">Things I Believe In</h4>
-              <ul class="font-serif italic text-base space-y-3 text-on-surface-variant">
-                <li>— Curiosity over credentials</li>
-                <li>— Questions before answers</li>
-                <li>— Data should serve humans</li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-body text-[9px] uppercase tracking-widest font-bold mb-5 text-primary">Currently Exploring</h4>
-              <ul class="font-serif italic text-base space-y-3 text-on-surface-variant">
-                <li>— Consumer behaviour research</li>
-                <li>— Public data storytelling</li>
-                <li>— Writing about data for humans</li>
-              </ul>
-            </div>
+      </a>
+      <div class="hr"></div>
+      <a href="https://medium.com/@kanya7" target="_blank" style="text-decoration:none;">
+        <div class="wrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;">
+            <span class="font-mono c-outline" style="font-size:11px;min-width:60px;">Medium</span>
+            <h3 class="font-serif" style="font-size:20px;font-weight:600;margin:0;color:#1c1c19;">I Didn’t Realize AI Was Affecting How I Learn — Until It Cut Me Off.</h3>
           </div>
+          <span class="font-mono" style="font-size:10px;color:#865300;border:1px solid rgba(134,83,0,0.3);padding:5px 14px;border-radius:999px;white-space:nowrap;">Read →</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── FUTURE / CLOSING ─── -->
-  <section class="px-8 md:px-16 py-40 bg-on-surface text-surface">
-    <div class="max-w-[800px] mx-auto text-center reveal">
-      <p class="font-body text-[10px] uppercase tracking-widest opacity-40 mb-8">What's next</p>
-      <h2 class="font-serif text-5xl md:text-7xl italic mb-12">The Future of Insight</h2>
-      <p class="font-serif italic text-xl md:text-2xl opacity-75 leading-relaxed">
-        "Data is not an end state. It is a raw material. I want to work on problems where the analysis matters beyond a business metric — healthcare, education, public infrastructure — places where turning cold numbers into warm human understanding actually changes lives."
-      </p>
-      <div class="mt-16 h-px w-16 bg-primary mx-auto mb-12"></div>
-      <p class="font-body text-[10px] uppercase tracking-widest opacity-50 mb-6">Open to Consumer Insights · Data Analyst · Marketing Analytics roles</p>
-      <a href="mailto:kanyavasu7@gmail.com" class="inline-block border border-white/30 text-white px-8 py-3 rounded font-body text-xs tracking-wide hover:bg-white hover:text-on-surface transition-all">
-        Let's Talk
       </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ─── FOOTER ─── -->
-  <footer class="bg-surface border-t border-outline-variant/20">
-    <div class="flex flex-col md:flex-row justify-between items-center px-8 md:px-16 py-10 max-w-[1440px] mx-auto gap-6">
-      <div>
-        <span class="font-serif italic text-lg text-primary">Kanya V</span>
-        <p class="font-body text-[10px] opacity-50 mt-1 tracking-wide uppercase">Data & Marketing Analyst · Chennai</p>
-        <p class="font-body text-[10px] opacity-40 mt-0.5">© 2026 Kanya V. All rights reserved.</p>
+<!-- BEYOND DATA -->
+<section id="beyond" style="padding:100px 40px;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <span class="slabel reveal">Beyond the Data</span>
+    <h2 class="reveal font-serif" style="font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:12px;">What Feeds the Curiosity</h2>
+    <p class="reveal font-serif" style="font-size:19px;font-style:italic;color:#3d4949;margin-bottom:56px;max-width:540px;">When I'm not interrogating datasets, I'm reading, listening, and asking questions that have nothing to do with work — until they suddenly do.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-bottom:24px;">
+      <!-- Reading -->
+      <div class="reveal" style="background:#f6f3ee;border-radius:14px;overflow:hidden;">
+        <img src="reading.png" alt="Reading" style="width:100%;height:180px;object-fit:cover;display:block;"/>
+        <div style="padding:32px;">
+          <p class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;">Reading List</p>
+          <ul class="font-serif" style="font-style:italic;font-size:17px;color:#3d4949;list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:10px;">
+            <li>— Thinking, Fast and Slow</li>
+            <li>— How to Win Friends and Influence People</li>
+            <li>— The Subtle Art of Not Giving F</li>
+            <li>— Surrounded by Idiots</li>
+          </ul>
+          <p style="font-size:14px;color:#6d7979;line-height:1.6;margin:0;">If a book has the word "why" in the title I've probably already bought it.</p>
+        </div>
       </div>
-      <div class="flex gap-6 flex-wrap justify-center">
-        <a href="https://linkedin.com/in/kanya-v" target="_blank" class="font-body text-[10px] tracking-wide text-secondary hover:text-primary transition-colors uppercase underline underline-offset-4">LinkedIn</a>
-        <a href="https://github.com/kanyavasudev" target="_blank" class="font-body text-[10px] tracking-wide text-secondary hover:text-primary transition-colors uppercase underline underline-offset-4">GitHub</a>
-        <a href="https://kanya7.substack.com" target="_blank" class="font-body text-[10px] tracking-wide text-secondary hover:text-primary transition-colors uppercase underline underline-offset-4">Substack</a>
-        <a href="mailto:kanyavasu7@gmail.com" class="font-body text-[10px] tracking-wide text-secondary hover:text-primary transition-colors uppercase underline underline-offset-4">Email</a>
+
+      <!-- Podcasts -->
+      <div class="reveal d1" style="background:#f6f3ee;border-radius:14px;overflow:hidden;">
+        <img src="podcasts.png" alt="Podcasts" style="width:100%;height:180px;object-fit:cover;display:block;"/>
+        <div style="padding:32px;">
+          <p class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;">Podcast Queue</p>
+          <ul class="font-serif" style="font-style:italic;font-size:17px;color:#3d4949;list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:10px;">
+            <li>— Mel Robbins</li>
+            <li>— Beer Biceps</li>
+            <li>— Podcasts About AI</li>
+            <li>— Podcasts about Human Behaviours</li>
+          </ul>
+          <p style="font-size:14px;color:#6d7979;line-height:1.6;margin:0;">Anything about the mind, motivation, habits, or how humans decide — I'm there.</p>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <!-- Beliefs -->
+    <div class="reveal" style="background:#f0ede9;border-radius:14px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;flex-wrap:wrap;">
+      <div>
+        <p class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;">Things I Believe In</p>
+        <ul style="font-size:16px;color:#3d4949;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> Curiosity is a skill, not just a personality trait</li>
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> The best insight is the one nobody expected</li>
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> Questions before answers, always</li>
+          <li style="display:flex;gap:10px;"><span class="c-primary">→</span> Real understanding beats surface-level metrics</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-mono c-secondary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;">What I Wonder About</p>
+        <ul style="font-size:16px;color:#3d4949;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+          <li style="display:flex;gap:10px;"><span class="c-secondary">→</span> Why people quit goals at day 12</li>
+          <li style="display:flex;gap:10px;"><span class="c-secondary">→</span> Why certain careers feel alive, others hollow</li>
+          <li style="display:flex;gap:10px;"><span class="c-secondary">→</span> What patterns predict loneliness early</li>
+          <li style="display:flex;gap:10px;"><span class="c-secondary">→</span> Why data surprises me every single time</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOW -->
+<section id="now" style="padding:100px 40px;background:#f6f3ee;">
+  <div style="max-width:680px;margin:0 auto;">
+    <span class="slabel reveal">What I'm Doing Now</span>
+    <h2 class="reveal font-serif" style="font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:48px;">Currently...</h2>
+    <div style="font-size:17px;color:#3d4949;line-height:1.8;display:flex;flex-direction:column;gap:20px;">
+      <p class="reveal">I'm currently exploring behavioral analytics — what patterns in data can tell us about human decisions before people even realize they've made them.</p>
+      <p class="reveal">I'm building projects that I genuinely want to understand — not for a checklist, but because the questions are sitting in my head and data is the only way to answer them properly.</p>
+      <p class="reveal">I write on Substack when a finding feels too important to stay inside a chart.</p>
+      <p class="reveal">And I'm looking for a team that values someone who brings both analytical rigor and genuine curiosity about people. If that sounds like your team — <strong style="color:#1c1c19;">let's talk.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:120px 40px;text-align:center;">
+  <div style="max-width:800px;margin:0 auto;">
+    <h2 class="reveal font-serif" style="font-size:clamp(44px,7vw,88px);font-weight:700;margin-bottom:8px;">Have a question?</h2>
+    <h3 class="reveal font-serif" style="font-size:clamp(36px,5.5vw,72px);font-weight:500;font-style:italic;color:#865300;margin-bottom:48px;">So do I.</h3>
+    <p class="reveal" style="font-size:18px;color:#3d4949;margin-bottom:56px;">Let's find the answers together.</p>
+    <div class="reveal" style="display:flex;flex-wrap:wrap;justify-content:center;gap:40px;margin-bottom:64px;">
+      <a href="https://linkedin.com/in/kanya-v" target="_blank" style="font-size:18px;font-weight:600;color:#1c1c19;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;">LinkedIn</a>
+      <a href="mailto:kanyavasu7@gmail.com" style="font-size:18px;font-weight:600;color:#1c1c19;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;">Email</a>
+      <a href="https://github.com/kanyavasudev" target="_blank" style="font-size:18px;font-weight:600;color:#1c1c19;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;">GitHub</a>
+      <a href="https://kanya7.substack.com" target="_blank" style="font-size:18px;font-weight:600;color:#1c1c19;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;">Substack</a>
+    </div>
+    <p class="reveal font-mono c-outline" style="font-size:14px;font-style:italic;">I have questions. Data has answers.</p>
+  </div>
+</section>
 
 </main>
 
-<!-- ═══════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════ -->
+<footer style="border-top:1px solid rgba(188,201,200,0.3);background:#fcf9f4;padding:36px 40px;text-align:center;">
+  <p class="font-mono c-outline" style="font-size:12px;margin:0;">Kanya V · Data Analyst · Tamil Nadu, India</p>
+  <p class="font-mono" style="font-size:10px;color:#6d7979;opacity:0.5;margin:6px 0 0;">© 2026 · kanyavasu7@gmail.com</p>
+</footer>
+
+<style>
+  @media(max-width:768px){
+    .hidden-mobile{display:none!important;}
+    #ham{display:flex!important;}
+    section{padding-left:24px!important;padding-right:24px!important;}
+    div[style*="grid-template-columns:1fr 2fr"]{grid-template-columns:1fr!important;}
+    div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+    div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important;}
+    div[style*="grid-template-columns:repeat(auto-fit,minmax(440px"]{grid-template-columns:1fr!important;}
+    div[style*="grid-template-columns:repeat(auto-fit,minmax(300px"]{grid-template-columns:1fr!important;}
+  }
+</style>
+
 <script>
-  // Mobile menu toggle
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
-  // Close mobile menu when a link is clicked
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
+  // Mobile menu
+  const ham=document.getElementById('ham');
+  const mn=document.getElementById('mobile-nav');
+  ham.addEventListener('click',()=>mn.classList.toggle('open'));
+  document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>mn.classList.remove('open')));
 
   // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => observer.observe(el));
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // Active nav highlight on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sideLinks = document.querySelectorAll('.side-link');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-    });
-    sideLinks.forEach(link => {
-      link.classList.remove('active', 'font-bold', 'border-primary', 'text-primary');
-      link.classList.add('text-secondary', 'border-transparent');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active', 'font-bold', 'text-primary', 'border-primary');
-        link.classList.remove('text-secondary', 'border-transparent');
-      }
-    });
+  // Active nav
+  const secs=document.querySelectorAll('section[id]');
+  const navAs=document.querySelectorAll('.nav-a');
+  window.addEventListener('scroll',()=>{
+    let cur='';
+    secs.forEach(s=>{if(window.scrollY>=s.offsetTop-150)cur=s.id;});
+    navAs.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+cur)l.classList.add('active');});
   });
 </script>
-
 </body>
 </html>
