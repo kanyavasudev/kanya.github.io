@@ -4,8 +4,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Kanya V | Data Analyst</title>
-<link rel="icon" type="image/png" sizes="32x32" href="KV.png">
-<link rel="icon" type="image/png" sizes="16x16" href="KV.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/KV.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/KV.png">
 <meta name="description" content="Kanya V. I ask too many questions. Data helps me answer them."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -205,7 +205,7 @@
 <section id="projects" style="padding:100px 40px;background:#f0ede9;">
   <div style="max-width:1100px;margin:0 auto;">
     
-    <span class="slabel reveal">Questions I couldn't stop thinking about</span>
+    <span class="slabel reveal">Real Questions. Real Data. Real Insights. Case Studies & Projects</span>
     <h2 class="reveal font-serif" style="font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:60px;">
       Data Case Studies
     </h2>
@@ -213,6 +213,47 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:28px;">
 
       <!-- CARD TEMPLATE START -->
+      <!-- SQL Data Warehouse Project -->
+      <a href="https://github.com/kanyavasudev/sql-data-warehouse-project" target="_blank"
+        style="text-decoration:none;color:inherit;cursor:pointer;">
+
+        <div class="reveal"
+            style="background:#fcf9f4;border-radius:14px;overflow:hidden;
+                    box-shadow:0 1px 4px rgba(0,0,0,0.06);
+                    transition:all 0.25s ease;"
+            onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.12)'"
+            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
+
+          <img src="images/overall_medallion_architecture.drawio.png" 
+              alt="SQL Data Warehouse Project" 
+              class="pimg"/>
+
+          <div style="padding:32px;">
+            <span class="font-mono c-primary">Data Engineering</span>
+
+            <h3 class="font-serif" style="font-size:22px;font-weight:700;margin:10px 0;">
+              SQL Data Warehouse Project
+            </h3>
+
+            <p class="font-serif" style="font-style:italic;color:#6d7979;margin-bottom:16px;">
+              "How can raw ERP & CRM data become business-ready insights?"
+            </p>
+
+            <p style="font-size:14px;color:#3d4949;line-height:1.7;margin-bottom:20px;">
+              Built an end-to-end Data Warehouse using MySQL with Medallion Architecture
+              (Bronze → Silver → Gold). Performed data cleaning, duplicate removal,
+              transformations, and created fact & dimension tables for analytics reporting.
+            </p>
+
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span class="pill">MySQL</span>
+              <span class="pill">ETL</span>
+              <span class="pill">Data Modeling</span>
+              <span class="pill">Analytics</span>
+            </div>
+          </div>
+        </div>
+      </a>
 
       <!-- Loneliness -->
       <a href="https://github.com/kanyavasudev/EU-Loneliness-Analysis" target="_blank"
@@ -225,7 +266,7 @@
              onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.12)'"
              onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
 
-          <img src="loneliness-analysis.png" alt="Loneliness Pattern Analysis" class="pimg"/>
+          <img src="images/loneliness-analysis.png" alt="Loneliness Pattern Analysis" class="pimg"/>
 
           <div style="padding:32px;">
             <span class="font-mono c-primary">Human Behavior</span>
@@ -263,7 +304,7 @@
              onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.12)'"
              onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
 
-          <img src="cmrl-analysis.png" alt="Chennai Metro Ridership Analysis" class="pimg"/>
+          <img src="images/cmrl-analysis.png" alt="Chennai Metro Ridership Analysis" class="pimg"/>
 
           <div style="padding:32px;">
             <span class="font-mono c-primary">Urban Mobility</span>
@@ -301,7 +342,7 @@
              onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.12)'"
              onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
 
-          <img src="uber-rides-analysis.png" alt="Ride Booking Demand Analysis" class="pimg"/>
+          <img src="images/uber-rides-analysis.png" alt="Ride Booking Demand Analysis" class="pimg"/>
 
           <div style="padding:32px;">
             <span class="font-mono c-primary">Demand Forecasting</span>
@@ -336,7 +377,7 @@
            onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.12)'"
            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.06)'">
 
-        <img src="library-management.png" class="pimg"/>
+        <img src="images/library-management.png" class="pimg"/>
 
         <div style="padding:32px;">
           <span class="font-mono c-primary">Systems Design</span>
@@ -552,7 +593,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-bottom:24px;">
       <!-- Reading -->
       <div class="reveal" style="background:#f6f3ee;border-radius:14px;overflow:hidden;">
-        <img src="reading.png" alt="Reading" style="width:100%;height:180px;object-fit:cover;display:block;"/>
+        <img src="images/reading.png" alt="Reading" style="width:100%;height:180px;object-fit:cover;display:block;"/>
         <div style="padding:32px;">
           <p class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;">Reading List</p>
           <ul class="font-serif" style="font-style:italic;font-size:17px;color:#3d4949;list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:10px;">
@@ -567,7 +608,7 @@
 
       <!-- Podcasts -->
       <div class="reveal d1" style="background:#f6f3ee;border-radius:14px;overflow:hidden;">
-        <img src="podcasts.png" alt="Podcasts" style="width:100%;height:180px;object-fit:cover;display:block;"/>
+        <img src="images/podcasts.png" alt="Podcasts" style="width:100%;height:180px;object-fit:cover;display:block;"/>
         <div style="padding:32px;">
           <p class="font-mono c-primary" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;">Podcast Queue</p>
           <ul class="font-serif" style="font-style:italic;font-size:17px;color:#3d4949;list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:10px;">
