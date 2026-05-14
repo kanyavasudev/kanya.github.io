@@ -1,1175 +1,935 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Kanya V | Data Analyst Portfolio</title>
-
-<meta name="description" content="Kanya V — Marketing Analyst & Data Analyst Portfolio" />
-
-<link rel="icon" href="images/KV.png" />
-
-<script src="https://cdn.tailwindcss.com"></script>
-
+<title>Kanya V | Digital Marketing & Content Strategist</title>
+<meta name="description" content="Kanya V — Digital Marketing Executive & Content Strategist | SEO, Organic Growth, Content Strategy"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+:root {
+  --cream: #FAF7F2;
+  --ink: #1A1714;
+  --teal: #0D6E6E;
+  --teal-light: #E6F4F4;
+  --amber: #C17B2F;
+  --amber-light: #FBF0E0;
+  --muted: #6B6560;
+  --border: rgba(26,23,20,0.08);
+  --white: #FFFFFF;
 }
 
-html{
-scroll-behavior:smooth;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-body{
-font-family:'Plus Jakarta Sans',sans-serif;
-background:#fcf9f4;
-color:#1c1c19;
-overflow-x:hidden;
-}
+html { scroll-behavior: smooth; }
 
-/* BACKGROUND BLUR */
-
-.bg-blur{
-position:fixed;
-width:500px;
-height:500px;
-border-radius:50%;
-filter:blur(120px);
-opacity:0.13;
-z-index:-1;
-}
-
-.blur1{
-background:#006767;
-top:-120px;
-left:-100px;
-}
-
-.blur2{
-background:#865300;
-right:-100px;
-top:40%;
-}
-
-.blur3{
-background:#00b3b3;
-bottom:-100px;
-left:30%;
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
 }
 
 /* LOADER */
-
-#loader{
-position:fixed;
-inset:0;
-background:#fcf9f4;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999999;
-transition:0.7s;
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.8s ease;
+}
+#loader-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 72px;
+  color: var(--cream);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+#loader-line {
+  width: 0;
+  height: 2px;
+  background: var(--teal);
+  margin-top: 16px;
+  animation: lineGrow 1s ease forwards 0.6s;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes lineGrow {
+  from { width: 0; }
+  to { width: 180px; }
 }
 
-#loader h1{
-font-size:60px;
-font-family:'Lora',serif;
-color:#006767;
+/* NOISE TEXTURE OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.4;
 }
 
-/* NAVBAR */
-
-.topbar{
-background:#1c1c19;
-color:white;
-padding:10px;
-text-align:center;
-font-size:12px;
-letter-spacing:0.08em;
-font-family:'Fira Code',monospace;
+/* TOPBAR */
+.topbar {
+  background: var(--teal);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
 }
 
-header{
-position:fixed;
-top:40px;
-width:100%;
-z-index:1000;
-backdrop-filter:blur(14px);
-background:rgba(252,249,244,0.82);
-border-bottom:1px solid rgba(0,0,0,0.05);
+/* NAV */
+header {
+  position: fixed;
+  top: 38px;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(250,247,242,0.88);
+  border-bottom: 1px solid var(--border);
 }
-
-nav{
-max-width:1280px;
-margin:auto;
-padding:20px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+nav {
+  max-width: 1240px;
+  margin: auto;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-.logo{
-font-family:'Lora',serif;
-font-size:24px;
-font-weight:700;
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--ink);
 }
-
-.nav-links{
-display:flex;
-gap:28px;
-align-items:center;
+.logo span { color: var(--teal); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.25s;
 }
-
-.nav-links a{
-text-decoration:none;
-font-size:14px;
-color:#1c1c19;
-transition:0.3s;
-}
-
-.nav-links a:hover{
-color:#006767;
-}
+.nav-links a:hover { color: var(--teal); }
 
 /* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding:140px 40px 80px;
-max-width:1280px;
-margin:auto;
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 160px 40px 100px;
+  max-width: 1240px;
+  margin: auto;
 }
-
-.hero-content{
-display:grid;
-grid-template-columns:1.1fr 0.9fr;
-gap:60px;
-align-items:center;
-width:100%;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
 }
-
-.hero h1{
-font-size:clamp(60px,9vw,110px);
-line-height:0.9;
-font-family:'Lora',serif;
-margin-bottom:24px;
+.hero-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-
-.hero h1 span{
-color:#006767;
+.hero-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--teal);
 }
-
-.hero h2{
-font-size:34px;
-font-style:italic;
-font-family:'Lora',serif;
-font-weight:400;
-margin-bottom:24px;
-color:#444;
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(56px, 8vw, 100px);
+  line-height: 0.92;
+  margin-bottom: 28px;
+  color: var(--ink);
 }
-
-.hero p{
-font-size:18px;
-line-height:1.8;
-max-width:520px;
-margin-bottom:36px;
-color:#444;
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal);
 }
-
-.hero-buttons{
-display:flex;
-flex-wrap:wrap;
-gap:14px;
-margin-bottom:40px;
+.hero-tagline {
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 500px;
+  margin-bottom: 40px;
+  font-weight: 400;
 }
-
-.hero-buttons a{
-padding:14px 24px;
-border-radius:999px;
-text-decoration:none;
-font-size:14px;
-font-weight:600;
-transition:0.3s;
+.hero-tagline strong { color: var(--ink); font-weight: 600; }
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
 }
-
-.primary-btn{
-background:#006767;
-color:white;
+.btn-primary {
+  padding: 14px 28px;
+  background: var(--teal);
+  color: white;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
 }
-
-.secondary-btn{
-border:1px solid #006767;
-color:#006767;
+.btn-primary:hover { background: #0a5858; transform: translateY(-2px); }
+.btn-secondary {
+  padding: 14px 28px;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
 }
-
-.resume-btn{
-background:#1c1c19;
-color:white;
+.btn-secondary:hover { background: var(--ink); color: white; transform: translateY(-2px); }
+.btn-ghost {
+  padding: 14px 28px;
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s;
 }
-
-.socials{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
+.btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+.socials { display: flex; gap: 12px; flex-wrap: wrap; }
+.socials a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  transition: 0.3s;
 }
+.socials a:hover { background: var(--teal); color: white; border-color: var(--teal); }
 
-.socials a{
-text-decoration:none;
-font-size:13px;
-padding:10px 18px;
-border:1px solid #d7d7d7;
-border-radius:999px;
-color:#1c1c19;
-transition:0.3s;
+/* HERO IMAGE */
+.hero-image-wrap {
+  position: relative;
 }
-
-.socials a:hover{
-background:#006767;
-color:white;
-border-color:#006767;
+.hero-image-frame {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: var(--teal-light);
 }
-
-.hero-image{
-position:relative;
+.hero-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
-.hero-image img{
-width:100%;
-border-radius:24px;
-box-shadow:0 30px 80px rgba(0,0,0,0.1);
+.hero-image-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: var(--amber);
+  color: white;
+  padding: 20px 24px;
+  border-radius: 20px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  line-height: 1.4;
+  box-shadow: 0 16px 40px rgba(193,123,47,0.3);
 }
+.hero-image-badge strong { display: block; font-size: 28px; }
 
-/* SECTION */
-
-section{
-padding:110px 40px;
+/* SECTION BASE */
+section { padding: 110px 40px; }
+.container { max-width: 1200px; margin: auto; }
+.section-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-
-.container{
-max-width:1200px;
-margin:auto;
+.section-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--teal);
 }
-
-.section-label{
-font-size:12px;
-letter-spacing:0.15em;
-text-transform:uppercase;
-font-family:'Fira Code',monospace;
-color:#006767;
-margin-bottom:18px;
-display:block;
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.08;
+  margin-bottom: 60px;
+  color: var(--ink);
 }
-
-.section-title{
-font-size:clamp(32px,5vw,54px);
-font-family:'Lora',serif;
-margin-bottom:60px;
-line-height:1.1;
-}
+.section-title em { font-style: italic; color: var(--teal); }
 
 /* STORY */
-
-.story{
-background:#f6f3ee;
+.story { background: var(--ink); color: var(--cream); }
+.story .section-eyebrow { color: #7DCECE; }
+.story .section-eyebrow::before { background: #7DCECE; }
+.story .section-title { color: var(--cream); }
+.story .section-title em { color: #7DCECE; }
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.story-text p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: rgba(250,247,242,0.75);
+  margin-bottom: 20px;
+}
+.story-text p strong { color: var(--cream); font-weight: 600; }
+.story-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  font-style: italic;
+  line-height: 1.4;
+  color: #7DCECE;
+  border-left: 3px solid var(--amber);
+  padding-left: 28px;
+  margin-top: 48px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 36px 30px;
+  text-align: center;
+  transition: 0.3s;
+}
+.stat-card:hover { background: rgba(255,255,255,0.07); }
+.stat-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 54px;
+  color: #7DCECE;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.stat-card p {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250,247,242,0.5);
+  font-family: 'Space Mono', monospace;
+  margin: 0 !important;
 }
 
-.story p{
-font-size:18px;
-line-height:1.9;
-margin-bottom:22px;
-color:#444;
-max-width:760px;
+/* WHAT I DO */
+.what-i-do-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
-
-.quote{
-margin-top:50px;
-padding-left:20px;
-border-left:4px solid #865300;
-font-size:36px;
-font-family:'Lora',serif;
-font-style:italic;
-line-height:1.4;
+.do-card {
+  background: white;
+  border-radius: 24px;
+  padding: 40px 32px;
+  border: 1px solid var(--border);
+  transition: 0.35s;
+  position: relative;
+  overflow: hidden;
 }
-
-/* STATS */
-
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:30px;
-margin-top:60px;
+.do-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transition: 0.35s;
 }
-
-.stat-card{
-background:white;
-padding:40px;
-border-radius:22px;
-text-align:center;
-box-shadow:0 10px 40px rgba(0,0,0,0.04);
+.do-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.08); }
+.do-card:hover::after { transform: scaleX(1); }
+.do-icon {
+  font-size: 36px;
+  margin-bottom: 20px;
+  display: block;
 }
-
-.stat-card h3{
-font-size:52px;
-color:#006767;
-font-family:'Lora',serif;
+.do-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  margin-bottom: 14px;
+  color: var(--ink);
 }
+.do-card p { font-size: 15px; line-height: 1.75; color: var(--muted); }
 
-.stat-card p{
-font-size:12px;
-letter-spacing:0.1em;
-text-transform:uppercase;
-margin-top:10px;
-color:#666;
+/* EXPERIENCE */
+.experience { background: var(--cream); }
+.exp-timeline { position: relative; }
+.exp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--border);
 }
-
-/* PROJECTS */
-
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-gap:30px;
+.exp-item {
+  padding-left: 48px;
+  padding-bottom: 56px;
+  position: relative;
 }
-
-.project-card{
-background:white;
-border-radius:24px;
-overflow:hidden;
-box-shadow:0 15px 50px rgba(0,0,0,0.05);
-transition:0.4s;
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 8px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 3px rgba(13,110,110,0.2);
 }
-
-.project-card:hover{
-transform:translateY(-10px);
+.exp-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
-
-.project-card img{
-width:100%;
-height:240px;
-object-fit:cover;
-transition:0.4s;
+.exp-company {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  background: var(--teal-light);
+  color: var(--teal);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-weight: 700;
 }
-
-.project-card:hover img{
-transform:scale(1.05);
+.exp-date {
+  font-size: 13px;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
 }
-
-.project-content{
-padding:32px;
+.exp-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--ink);
+  margin-bottom: 6px;
 }
-
-.project-category{
-font-size:12px;
-font-family:'Fira Code',monospace;
-color:#006767;
-margin-bottom:16px;
+.exp-subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-style: italic;
 }
-
-.project-card h3{
-font-size:28px;
-font-family:'Lora',serif;
-margin-bottom:14px;
+.exp-bullets { list-style: none; }
+.exp-bullets li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+  padding: 6px 0 6px 20px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
 }
-
-.project-card p{
-line-height:1.8;
-font-size:15px;
-color:#555;
-margin-bottom:24px;
+.exp-bullets li:last-child { border-bottom: none; }
+.exp-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-size: 13px;
 }
-
-.pills{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
-
-.pill{
-padding:8px 14px;
-border-radius:999px;
-background:#f0ede9;
-font-size:12px;
-font-family:'Fira Code',monospace;
-transition:0.3s;
-}
-
-.pill:hover{
-background:#006767;
-color:white;
-transform:translateY(-2px);
-}
+.exp-bullets li strong { color: var(--ink); font-weight: 600; }
 
 /* SKILLS */
-
-.skills{
-background:#f6f3ee;
+.skills-section { background: var(--amber-light); }
+.skills-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
-
-.skills-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:26px;
+.skill-group {
+  background: white;
+  border-radius: 22px;
+  padding: 36px;
+  border: 1px solid rgba(193,123,47,0.12);
 }
-
-.skill-card{
-background:white;
-padding:36px;
-border-radius:24px;
-box-shadow:0 10px 40px rgba(0,0,0,0.04);
+.skill-group h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-
-.skill-card h3{
-font-size:28px;
-font-family:'Lora',serif;
-margin-bottom:24px;
+.skill-group h3 span { font-size: 22px; }
+.pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.pill {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: 0.25s;
+  cursor: default;
 }
+.pill:hover { background: var(--teal); color: white; border-color: var(--teal); transform: translateY(-2px); }
 
 /* WRITING */
-
-.writing-card{
-background:white;
-padding:36px;
-border-radius:24px;
-margin-bottom:24px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:24px;
-transition:0.3s;
-text-decoration:none;
-color:#1c1c19;
+.writing-grid { display: flex; flex-direction: column; gap: 20px; }
+.writing-card {
+  background: white;
+  border-radius: 20px;
+  padding: 36px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  transition: 0.3s;
 }
-
-.writing-card:hover{
-transform:translateY(-6px);
+.writing-card:hover { transform: translateX(8px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); border-color: var(--teal); }
+.writing-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--teal);
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
 }
-
-.writing-card h3{
-font-family:'Lora',serif;
-font-size:28px;
+.writing-card h3 { font-family: 'DM Serif Display', serif; font-size: 26px; margin-bottom: 10px; }
+.writing-card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+.writing-arrow {
+  font-size: 28px;
+  color: var(--teal);
+  flex-shrink: 0;
+  transition: 0.3s;
 }
-
-/* HOBBIES */
-
-.hobbies-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
-}
-
-.hobby-card{
-background:#f6f3ee;
-border-radius:24px;
-overflow:hidden;
-}
-
-.hobby-card img{
-width:100%;
-height:220px;
-object-fit:cover;
-}
-
-.hobby-content{
-padding:30px;
-}
-
-.hobby-content h3{
-font-size:28px;
-font-family:'Lora',serif;
-margin-bottom:20px;
-}
+.writing-card:hover .writing-arrow { transform: translateX(6px); }
 
 /* CONTACT */
-
-.contact{
-background:#1c1c19;
-color:white;
-text-align:center;
+.contact-section { background: var(--ink); color: var(--cream); text-align: center; }
+.contact-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(48px, 8vw, 88px);
+  margin-bottom: 18px;
+  line-height: 1;
 }
-
-.contact h2{
-font-size:clamp(50px,8vw,90px);
-font-family:'Lora',serif;
-margin-bottom:20px;
+.contact-section h2 em { font-style: italic; color: #7DCECE; }
+.contact-section p { font-size: 18px; color: rgba(250,247,242,0.65); margin-bottom: 44px; }
+.contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.contact-links a {
+  padding: 14px 26px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s;
 }
-
-.contact p{
-font-size:18px;
-margin-bottom:40px;
-color:#cfcfcf;
+.contact-links a:hover { background: white; color: var(--ink); }
+.contact-email {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(18px, 2.5vw, 26px);
+  color: #7DCECE;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 48px;
+  transition: 0.3s;
 }
+.contact-email:hover { color: white; }
 
-.contact-links{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.contact-links a{
-text-decoration:none;
-padding:14px 24px;
-border:1px solid rgba(255,255,255,0.1);
-border-radius:999px;
-color:white;
-transition:0.3s;
-}
-
-.contact-links a:hover{
-background:white;
-color:#1c1c19;
-}
-
-/* CURSOR GLOW */
-
-#cursor-glow{
-position:fixed;
-width:260px;
-height:260px;
-border-radius:50%;
-background:radial-gradient(circle,
-rgba(0,103,103,0.12) 0%,
-rgba(0,103,103,0) 70%);
-pointer-events:none;
-transform:translate(-50%,-50%);
-z-index:9999;
+/* CURSOR */
+#cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,110,110,0.1) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9997;
+  transition: opacity 0.3s;
 }
 
 /* MOBILE */
-
-@media(max-width:900px){
-
-.hero-content{
-grid-template-columns:1fr;
+@media (max-width: 900px) {
+  .hero-grid, .story-grid, .what-i-do-grid { grid-template-columns: 1fr; }
+  .hero-image-wrap { order: -1; }
+  .hero-image-frame { aspect-ratio: 1/1; }
+  .skills-wrap { grid-template-columns: 1fr; }
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section { padding: 80px 24px; }
+  .hero { padding: 140px 24px 80px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .what-i-do-grid { grid-template-columns: 1fr; }
+  .writing-card { flex-direction: column; align-items: flex-start; }
 }
 
-.stats{
-grid-template-columns:repeat(2,1fr);
+/* FADE IN ON SCROLL */
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
-
-.nav-links{
-display:none;
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-.hero{
-padding-top:180px;
-}
-
-}
-
-@media(max-width:600px){
-
-.stats{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-font-size:64px;
-}
-
-.section-title{
-font-size:42px;
-}
-
-}
-
 </style>
 </head>
-
 <body>
 
 <div id="loader">
-<h1>Kanya V</h1>
+  <h1 id="loader-name">Kanya V</h1>
+  <div id="loader-line"></div>
 </div>
 
-<div class="bg-blur blur1"></div>
-<div class="bg-blur blur2"></div>
-<div class="bg-blur blur3"></div>
-
-<div class="topbar">
-Open to Data Analyst • Marketing Analyst • Business Analyst Opportunities
-</div>
+<div class="topbar">Open to Digital Marketing Executive · Content Strategist · SEO & Content roles — Immediate Joiner</div>
 
 <header>
-
-<nav>
-
-<div class="logo">
-Kanya V
-</div>
-
-<div class="nav-links">
-<a href="#story">Story</a>
-<a href="#projects">Projects</a>
-<a href="#skills">Skills</a>
-<a href="#writing">Writing</a>
-<a href="#hobbies">Beyond</a>
-<a href="#contact">Contact</a>
-</div>
-
-</nav>
-
+  <nav>
+    <div class="logo">Kanya <span>V</span></div>
+    <div class="nav-links">
+      <a href="#story">Story</a>
+      <a href="#what-i-do">What I Do</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 </header>
 
 <!-- HERO -->
-
 <section class="hero">
-
-<div class="hero-content">
-
-<div>
-
-<span class="section-label">
-Marketing Analyst • Data Analyst • Storyteller
-</span>
-
-<h1>
-Hi.<br>
-I'm <span>Kanya.</span>
-</h1>
-
-<h2>
-I ask a lot of questions.
-</h2>
-
-<p>
-Marketing taught me how businesses grow.
-Analytics taught me why they grow.
-Now I use data to understand people, behavior, decisions, and patterns.
-</p>
-
-<div class="hero-buttons">
-
-<a href="#projects" class="primary-btn">
-View Projects
-</a>
-
-<a href="resume/Kanya_V_Resume.pdf" target="_blank" class="resume-btn">
-Download Resume
-</a>
-
-<a href="mailto:kanyavasu7@gmail.com" class="secondary-btn">
-Let's Talk
-</a>
-
-</div>
-
-<div class="socials">
-
-<a href="https://linkedin.com/in/kanya-v" target="_blank">
-LinkedIn
-</a>
-
-<a href="https://github.com/kanyavasudev" target="_blank">
-GitHub
-</a>
-
-<a href="https://kanya7.substack.com" target="_blank">
-Substack
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-image">
-<img src="images/kanya.jpg" alt="Kanya">
-</div>
-
-</div>
-
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">Digital Marketing · Content Strategy · Organic Growth</div>
+      <h1>Hi, I'm<br><em>Kanya.</em></h1>
+      <p class="hero-tagline">
+        I <strong>write content that connects</strong>, build strategies that grow audiences, and use data to figure out what's actually working — so brands don't just post, they <strong>grow.</strong>
+      </p>
+      <div class="hero-cta">
+        <a href="#experience" class="btn-primary">See My Work</a>
+        <a href="resume/Kanya_V_Resume.pdf" target="_blank" class="btn-secondary">Download Resume</a>
+        <a href="mailto:kanyavasu7@gmail.com" class="btn-ghost">Let's Talk</a>
+      </div>
+      <div class="socials">
+        <a href="https://linkedin.com/in/kanya-v" target="_blank">LinkedIn</a>
+        <a href="https://kanya7.substack.com" target="_blank">Substack</a>
+        <a href="https://medium.com/@kanyavasu7" target="_blank">Medium</a>
+        <a href="https://medium.com/@lemonteathoughts" target="_blank">Lemon Tea</a>
+        <a href="mailto:kanyavasu7@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-image-frame">
+        <img src="images/kanya.jpg" alt="Kanya V"/>
+      </div>
+      <div class="hero-image-badge">
+        <strong>2.5+</strong>
+        Years in Digital<br>Marketing & Content
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- STORY -->
-
 <section class="story" id="story">
-
-<div class="container">
-
-<span class="section-label">
-My Story
-</span>
-
-<h2 class="section-title">
-I came for marketing.<br>
-I stayed for the data.
-</h2>
-
-<p>
-I started my career in digital marketing, but I quickly became more interested in the numbers behind campaigns than the campaigns themselves.
-</p>
-
-<p>
-I wanted to understand why something worked, why it failed, and what patterns existed beneath user behavior.
-</p>
-
-<p>
-That curiosity pushed me toward analytics, reporting, behavioral analysis, and data storytelling.
-</p>
-
-<p>
-Today I combine marketing thinking with analytical problem-solving to uncover insights that actually help businesses make decisions.
-</p>
-
-<div class="quote">
-“Marketing showed me the data. Analytics helped me understand it.”
-</div>
-
-<div class="stats">
-
-<div class="stat-card">
-<h3>2.5+</h3>
-<p>Years Experience</p>
-</div>
-
-<div class="stat-card">
-<h3>40%</h3>
-<p>Organic Growth</p>
-</div>
-
-<div class="stat-card">
-<h3>15x</h3>
-<p>Instagram Growth</p>
-</div>
-
-<div class="stat-card">
-<h3>50K+</h3>
-<p>Records Analyzed</p>
-</div>
-
-</div>
-
-</div>
-
+  <div class="container">
+    <div class="story-grid">
+      <div>
+        <div class="section-eyebrow">My Story</div>
+        <h2 class="section-title">I came for marketing.<br>I stayed for <em>the stories.</em></h2>
+        <div class="story-quote">"I don't just create content — I shape ideas into words that make people stop scrolling."</div>
+      </div>
+      <div>
+        <div class="story-text">
+          <p>I started in digital marketing and quickly realised what energised me most wasn't the dashboards — it was the <strong>ideas.</strong> The conversations with clients. Understanding what a brand needed to say. Shaping raw thoughts into content that actually resonates.</p>
+          <p>At StrongBox IT, I independently owned the entire marketing function — content calendars, SEO strategy, social media, and performance reporting — all while managing a team of three and reporting directly to the CEO.</p>
+          <p>Today, I consult for multiple clients — <strong>writing blogs, building content strategies, managing Instagram and LinkedIn</strong>, and turning ideas into organic growth. I use AI as a tool, but the strategy, the voice, and the creative direction are always mine.</p>
+          <p>I'm looking for a role where I can write, create, collaborate, and help a brand grow its voice — not just its metrics.</p>
+        </div>
+      </div>
+    </div>
+    <div class="stats-grid" style="margin-top:60px;">
+      <div class="stat-card"><h3>40%</h3><p>Organic Traffic Growth</p></div>
+      <div class="stat-card"><h3>15x</h3><p>Instagram Follower Growth</p></div>
+      <div class="stat-card"><h3>25%</h3><p>Inbound Lead Uplift</p></div>
+      <div class="stat-card"><h3>5K+</h3><p>Social Followers Built</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- WHAT I DO -->
+<section id="what-i-do">
+  <div class="container">
+    <div class="section-eyebrow">What I Do</div>
+    <h2 class="section-title">Where I can add<br><em>real value</em></h2>
+    <div class="what-i-do-grid">
+      <div class="do-card fade-in">
+        <span class="do-icon">✍️</span>
+        <h3>Content Writing & Strategy</h3>
+        <p>I write SEO-optimised blogs, social media content, and brand copy — and build the content calendars and strategies behind them. Every piece has a purpose.</p>
+      </div>
+      <div class="do-card fade-in">
+        <span class="do-icon">📈</span>
+        <h3>SEO & Organic Growth</h3>
+        <p>Keyword research, content gap analysis, on-page optimisation, and landing page strategy — I grow organic traffic without paid spend.</p>
+      </div>
+      <div class="do-card fade-in">
+        <span class="do-icon">📱</span>
+        <h3>Social Media Content</h3>
+        <p>Instagram, LinkedIn, YouTube — I create content that builds audiences. Grew one client's Instagram 15x in under 3 months through consistent, strategic posting.</p>
+      </div>
+      <div class="do-card fade-in">
+        <span class="do-icon">🎯</span>
+        <h3>Brand Voice & Storytelling</h3>
+        <p>I talk to clients, understand their vision, and translate it into a consistent brand voice across every channel — from website copy to social captions.</p>
+      </div>
+      <div class="do-card fade-in">
+        <span class="do-icon">📊</span>
+        <h3>Performance Tracking</h3>
+        <p>GA4, Google Search Console, Excel dashboards — I track what matters and turn performance data into clear, actionable content decisions.</p>
+      </div>
+      <div class="do-card fade-in">
+        <span class="do-icon">🤝</span>
+        <h3>Client & Stakeholder Management</h3>
+        <p>I gather requirements, manage timelines, and communicate clearly — so projects move forward and clients always know what's happening.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="projects">
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-eyebrow">Experience</div>
+    <h2 class="section-title">Where I've done<br><em>real work</em></h2>
+    <div class="exp-timeline">
 
-<div class="container">
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <span class="exp-company">Freelance Consulting</span>
+          <span class="exp-date">May 2025 – Present</span>
+        </div>
+        <div class="exp-title">Digital Marketing & Content Consultant</div>
+        <div class="exp-subtitle">Independent client consulting — content strategy, SEO, social media & organic growth</div>
+        <ul class="exp-bullets">
+          <li>Grew a client's Instagram <strong>15x (100 → 1,500 followers)</strong> in under 3 months — managed content creation with Canva AI, built the content calendar, and drove consistent inbound leads through organic posts.</li>
+          <li>Develop and execute <strong>monthly content strategies and content calendars</strong> for multiple clients across Instagram, LinkedIn, and YouTube — aligned to audience growth and business goals.</li>
+          <li>Write and publish <strong>SEO-optimised blog content</strong> using AI tools — posting across client websites and LinkedIn to drive organic visibility and thought leadership.</li>
+          <li>Coordinate directly with clients to gather requirements, define content goals, and manage project delivery — ensuring everything is on-brand and on-time.</li>
+          <li>Build <strong>weekly performance reports</strong> tracking engagement, reach, and follower growth — giving clients clear visibility into what's working.</li>
+        </ul>
+      </div>
 
-<span class="section-label">
-Case Studies
-</span>
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <span class="exp-company">StrongBox IT</span>
+          <span class="exp-date">Jan 2024 – Mar 2025</span>
+        </div>
+        <div class="exp-title">Digital Marketing Executive</div>
+        <div class="exp-subtitle">Sole ownership of the full marketing function — reporting to CEO, managing a team of 3</div>
+        <ul class="exp-bullets">
+          <li>Drove <strong>40% organic traffic growth</strong> through a data-led SEO content strategy — competitor benchmarking, content gap analysis, and service page optimisation using Google Search Console.</li>
+          <li>Generated a <strong>25% uplift in inbound leads</strong> by identifying location-based keyword opportunities and building SEO-optimised landing pages in WordPress and Elementor.</li>
+          <li>Independently <strong>led the marketing team of 3</strong> (content writer, designer, junior marketer) for 9 months after a senior manager exit — maintained all KPIs and content schedules without disruption.</li>
+          <li>Discovered through LinkedIn analytics that newsletter posts generated <strong>5x higher impressions</strong> — pivoted content strategy to prioritise newsletters, driving consistent follower and subscriber growth.</li>
+          <li>Scaled company social media to <strong>5,000 followers</strong> in 12 months — managed monthly content calendars and campaigns across Instagram, LinkedIn, and Facebook.</li>
+          <li>Built GA4 dashboards tracking <strong>15+ KPIs daily</strong> — presented weekly performance reports directly to CEO and senior leadership.</li>
+        </ul>
+      </div>
 
-<h2 class="section-title">
-Projects Built From Curiosity
-</h2>
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <span class="exp-company">StrongBox IT</span>
+          <span class="exp-date">Jul 2023 – Dec 2023</span>
+        </div>
+        <div class="exp-title">Marketing Reporting Intern</div>
+        <div class="exp-subtitle">Analytics, content support, and cross-team coordination in a fast-paced startup</div>
+        <ul class="exp-bullets">
+          <li>Diagnosed declining website rankings and follower performance through GA4 analysis — presented corrective recommendations directly to COO.</li>
+          <li>Acted as the bridge between technical, sales, and marketing teams — translating business needs into structured performance reports and content frameworks.</li>
+        </ul>
+      </div>
 
-<div class="projects-grid">
-
-<!-- PROJECT -->
-
-<a href="https://github.com/kanyavasudev/sql-data-warehouse-project" target="_blank" class="project-card">
-
-<img src="images/overall_medallion_architecture.drawio.png">
-
-<div class="project-content">
-
-<div class="project-category">
-Data Engineering
-</div>
-
-<h3>
-SQL Data Warehouse
-</h3>
-
-<p>
-Built an end-to-end data warehouse using Medallion Architecture with Bronze, Silver, and Gold layers. Cleaned and transformed ERP & CRM data into business-ready analytics models.
-</p>
-
-<div class="pills">
-<span class="pill">MySQL</span>
-<span class="pill">ETL</span>
-<span class="pill">Data Modeling</span>
-<span class="pill">Analytics</span>
-</div>
-
-</div>
-
-</a>
-
-<!-- PROJECT -->
-
-<a href="https://github.com/kanyavasudev/EU-Loneliness-Analysis" target="_blank" class="project-card">
-
-<img src="images/loneliness-analysis.png">
-
-<div class="project-content">
-
-<div class="project-category">
-Human Behavior
-</div>
-
-<h3>
-EU Loneliness Analysis
-</h3>
-
-<p>
-Analyzed 25,000+ survey responses using Python and Power BI to uncover behavioral patterns across loneliness, age groups, and social media usage.
-</p>
-
-<div class="pills">
-<span class="pill">Python</span>
-<span class="pill">Power BI</span>
-<span class="pill">EDA</span>
-<span class="pill">Behavior Analysis</span>
-</div>
-
-</div>
-
-</a>
-
-<!-- PROJECT -->
-
-<a href="https://github.com/kanyavasudev/cmrl-analysis" target="_blank" class="project-card">
-
-<img src="images/cmrl-analysis.png">
-
-<div class="project-content">
-
-<div class="project-category">
-Urban Mobility
-</div>
-
-<h3>
-Chennai Metro Analysis
-</h3>
-
-<p>
-Analyzed 3 years of Chennai Metro ridership data and discovered a massive shift from paper tokens to digital smart cards.
-</p>
-
-<div class="pills">
-<span class="pill">SQL</span>
-<span class="pill">Power BI</span>
-<span class="pill">Trend Analysis</span>
-<span class="pill">Visualization</span>
-</div>
-
-</div>
-
-</a>
-
-<!-- PROJECT -->
-
-<a href="https://github.com/kanyavasudev/Ride-Booking-Analysis-Python-EDA" target="_blank" class="project-card">
-
-<img src="images/uber-rides-analysis.png">
-
-<div class="project-content">
-
-<div class="project-category">
-Demand Forecasting
-</div>
-
-<h3>
-Ride Booking Analysis
-</h3>
-
-<p>
-Explored 50K+ ride bookings to identify cancellation patterns, demand spikes, and customer behavior trends.
-</p>
-
-<div class="pills">
-<span class="pill">Python</span>
-<span class="pill">Pandas</span>
-<span class="pill">Matplotlib</span>
-<span class="pill">EDA</span>
-</div>
-
-</div>
-
-</a>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
 <!-- SKILLS -->
-
-<section class="skills" id="skills">
-
-<div class="container">
-
-<span class="section-label">
-Technical Stack
-</span>
-
-<h2 class="section-title">
-What I Work With
-</h2>
-
-<div class="skills-grid">
-
-<div class="skill-card">
-
-<h3>
-Analytics
-</h3>
-
-<div class="pills">
-<span class="pill">GA4</span>
-<span class="pill">Campaign Analytics</span>
-<span class="pill">KPI Tracking</span>
-<span class="pill">Funnel Analysis</span>
-<span class="pill">Market Research</span>
-</div>
-
-</div>
-
-<div class="skill-card">
-
-<h3>
-Data Tools
-</h3>
-
-<div class="pills">
-<span class="pill">Python</span>
-<span class="pill">Pandas</span>
-<span class="pill">NumPy</span>
-<span class="pill">MySQL</span>
-<span class="pill">Power BI</span>
-<span class="pill">Excel</span>
-</div>
-
-</div>
-
-<div class="skill-card">
-
-<h3>
-Marketing
-</h3>
-
-<div class="pills">
-<span class="pill">SEO</span>
-<span class="pill">Google Ads</span>
-<span class="pill">Meta Ads</span>
-<span class="pill">Email Marketing</span>
-<span class="pill">Content Strategy</span>
-</div>
-
-</div>
-
-<div class="skill-card">
-
-<h3>
-Soft Skills
-</h3>
-
-<div class="pills">
-<span class="pill">Leadership</span>
-<span class="pill">Storytelling</span>
-<span class="pill">Presentations</span>
-<span class="pill">Stakeholder Reporting</span>
-<span class="pill">Research Thinking</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="section-eyebrow">Skills</div>
+    <h2 class="section-title">What I work<br><em>with</em></h2>
+    <div class="skills-wrap">
+      <div class="skill-group fade-in">
+        <h3><span>✍️</span> Content & Writing</h3>
+        <div class="pills">
+          <span class="pill">Content Strategy</span>
+          <span class="pill">Blog Writing</span>
+          <span class="pill">SEO Copywriting</span>
+          <span class="pill">Content Calendars</span>
+          <span class="pill">Brand Storytelling</span>
+          <span class="pill">Content Editing</span>
+          <span class="pill">AI-Assisted Writing</span>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3><span>📈</span> SEO & Organic Growth</h3>
+        <div class="pills">
+          <span class="pill">On-Page SEO</span>
+          <span class="pill">Keyword Research</span>
+          <span class="pill">Google Search Console</span>
+          <span class="pill">Content Gap Analysis</span>
+          <span class="pill">Landing Page Optimisation</span>
+          <span class="pill">Competitor Benchmarking</span>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3><span>📱</span> Social & Platforms</h3>
+        <div class="pills">
+          <span class="pill">Instagram</span>
+          <span class="pill">LinkedIn</span>
+          <span class="pill">YouTube</span>
+          <span class="pill">Meta Business Suite</span>
+          <span class="pill">Canva</span>
+          <span class="pill">WordPress</span>
+          <span class="pill">Elementor</span>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3><span>📊</span> Analytics & Reporting</h3>
+        <div class="pills">
+          <span class="pill">GA4</span>
+          <span class="pill">KPI Dashboards</span>
+          <span class="pill">Excel</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Funnel Analysis</span>
+          <span class="pill">Performance Reporting</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- WRITING -->
-
 <section id="writing">
-
-<div class="container">
-
-<span class="section-label">
-Writing
-</span>
-
-<h2 class="section-title">
-Thoughts Beyond Dashboards
-</h2>
-
-<a href="https://kanya7.substack.com" target="_blank" class="writing-card">
-
-<div>
-
-<h3>
-What I Learned from Analyzing Loneliness Data
-</h3>
-
-<p style="margin-top:14px;color:#555;">
-A reflection on behavioral patterns, social connection, and what data reveals about modern loneliness.
-</p>
-
-</div>
-
-<div>
-Read →
-</div>
-
-</a>
-
-<a href="https://medium.com/@kanyavasu7" target="_blank" class="writing-card">
-
-<div>
-
-<h3>
-I Didn’t Realize AI Was Affecting How I Learn
-</h3>
-
-<p style="margin-top:14px;color:#555;">
-Exploring how AI changes thinking patterns, attention spans, and learning behavior.
-</p>
-
-</div>
-
-<div>
-Read →
-</div>
-
-</a>
-
-</div>
-
-</section>
-
-<!-- HOBBIES -->
-
-<section id="hobbies">
-
-<div class="container">
-
-<span class="section-label">
-Beyond Data
-</span>
-
-<h2 class="section-title">
-What Feeds The Curiosity
-</h2>
-
-<div class="hobbies-grid">
-
-<div class="hobby-card">
-
-<img src="images/reading.png">
-
-<div class="hobby-content">
-
-<h3>
-Reading
-</h3>
-
-<p>
-Books about psychology, human behavior, habits, communication, and decision-making constantly influence how I approach analytics.
-</p>
-
-</div>
-
-</div>
-
-<div class="hobby-card">
-
-<img src="images/podcasts.png">
-
-<div class="hobby-content">
-
-<h3>
-Podcasts
-</h3>
-
-<p>
-I listen to podcasts about AI, self-improvement, behavioral science, startups, and motivation almost every day.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+  <div class="container">
+    <div class="section-eyebrow">Writing</div>
+    <h2 class="section-title">Thoughts I've<br><em>put into words</em></h2>
+    <div class="writing-grid">
+      <a href="https://kanya7.substack.com" target="_blank" class="writing-card fade-in">
+        <div>
+          <div class="writing-tag">SUBSTACK · REFLECTION</div>
+          <h3>What I Learned from Analyzing Loneliness Data</h3>
+          <p>A reflection on behavioral patterns, social connection, and what data reveals about modern loneliness.</p>
+        </div>
+        <div class="writing-arrow">→</div>
+      </a>
+      <a href="https://medium.com/@kanyavasu7" target="_blank" class="writing-card fade-in">
+        <div>
+          <div class="writing-tag">MEDIUM · OBSERVATION</div>
+          <h3>I Didn't Realize AI Was Affecting How I Learn</h3>
+          <p>Exploring how AI changes thinking patterns, attention spans, and learning behavior — from someone living through it.</p>
+        </div>
+        <div class="writing-arrow">→</div>
+      </a>
+      <a href="https://medium.com/@lemonteathoughts" target="_blank" class="writing-card fade-in">
+        <div>
+          <div class="writing-tag">MEDIUM · PERSONAL WRITING</div>
+          <h3>Lemon Tea Thoughts</h3>
+          <p>Thoughts, reflections, and little moments that touch my heart — a diary of life's quiet joys and discoveries. The side of me that writes just to feel.</p>
+        </div>
+        <div class="writing-arrow">→</div>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
-
-<section class="contact" id="contact">
-
-<div class="container">
-
-<h2>
-Have a question?
-</h2>
-
-<p>
-Let’s connect and find the answer together.
-</p>
-
-<div class="contact-links">
-
-<a href="mailto:kanyavasu7@gmail.com">
-Email
-</a>
-
-<a href="https://linkedin.com/in/kanya-v" target="_blank">
-LinkedIn
-</a>
-
-<a href="https://github.com/kanyavasudev" target="_blank">
-GitHub
-</a>
-
-<a href="https://kanya7.substack.com" target="_blank">
-Substack
-</a>
-
-</div>
-
-</div>
-
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2>Let's work<br><em>together.</em></h2>
+    <p>Open to Digital Marketing, Content Strategy, and SEO roles. Immediate joiner.</p>
+    <a href="mailto:kanyavasu7@gmail.com" class="contact-email">kanyavasu7@gmail.com</a>
+    <div class="contact-links">
+      <a href="mailto:kanyavasu7@gmail.com">Email Me</a>
+      <a href="https://linkedin.com/in/kanya-v" target="_blank">LinkedIn</a>
+      <a href="https://kanya7.substack.com" target="_blank">Substack</a>
+      <a href="https://medium.com/@kanyavasu7" target="_blank">Medium</a>
+      <a href="resume/Kanya_V_Resume.pdf" target="_blank">Download Resume</a>
+    </div>
+    <p style="margin-top:60px;font-size:13px;opacity:0.3;font-family:'Space Mono',monospace;">Chennai, India · +91 86103 73856</p>
+  </div>
 </section>
 
 <div id="cursor-glow"></div>
 
 <script>
-
-/* LOADER */
-
-window.addEventListener('load',()=>{
-
-setTimeout(()=>{
-
-document.getElementById('loader').style.opacity='0';
-
-setTimeout(()=>{
-document.getElementById('loader').style.display='none';
-},700);
-
-},1000);
-
+// LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').style.opacity = '0';
+    setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 800);
+  }, 1400);
 });
 
-/* CURSOR GLOW */
-
-const glow=document.getElementById('cursor-glow');
-
-window.addEventListener('mousemove',(e)=>{
-
-glow.style.left=e.clientX+'px';
-glow.style.top=e.clientY+'px';
-
+// CURSOR GLOW
+const glow = document.getElementById('cursor-glow');
+window.addEventListener('mousemove', (e) => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
 });
 
+// SCROLL FADE IN
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => { entry.target.classList.add('visible'); }, i * 80);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
 </body>
