@@ -272,44 +272,38 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.06); }
 .story-timeline li .date { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase; }
 
 /* ─── PROJECTS ─── */
-#projects { background: var(--warm-white); }
-.projects-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 72px; }
-.projects-intro p { font-size: 17px; line-height: 1.8; color: var(--muted); }
-.projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
 .project-card {
-  background: var(--cream); border: 1px solid var(--border); position: relative;
-  overflow: hidden; transition: 0.4s; cursor: pointer; display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-.project-card:hover { background: white; box-shadow: 0 32px 80px rgba(0,0,0,0.12); transform: translateY(-6px); z-index: 2; }
-.project-card:hover .project-arrow { transform: translate(4px,-4px); }
-.project-img { width: 100%; height: 200px; object-fit: cover; object-position: top; display: block; }
-.project-img-placeholder { width: 100%; height: 200px; background: var(--teal-dim); display: flex; align-items: center; justify-content: center; font-size: 48px; }
-.project-body { padding: 32px; flex: 1; display: flex; flex-direction: column; }
-.project-type {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em;
-  text-transform: uppercase; margin-bottom: 12px;
-}
-.project-type.data { color: var(--teal); }
-.project-type.marketing { color: var(--amber); }
-.project-type.hybrid { color: var(--red-accent); }
-.project-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
-.project-q { font-size: 13px; font-style: italic; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
-.project-desc { font-size: 14px; line-height: 1.7; color: var(--muted); flex: 1; margin-bottom: 20px; }
-.project-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-.ppill {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
-  background: var(--warm-white); border: 1px solid var(--border); padding: 4px 10px;
-  border-radius: 2px; color: var(--muted);
-}
-.project-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-.project-link { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); text-decoration: none; }
-.project-arrow { font-size: 20px; color: var(--teal); transition: transform 0.3s; }
 
-/* Wide card spans 2 cols */
-.project-card.wide { grid-column: span 2; flex-direction: row; }
-.project-card.wide .project-img { width: 45%; height: 100%; min-height: 240px; object-position: center; }
-.project-card.wide .project-body { padding: 40px; }
+.project-image {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  border-radius: 18px;
+}
 
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
 /* ─── WORK EXP ─── */
 #work { background: var(--cream); }
 .work-grid { display: grid; grid-template-columns: 280px 1fr; gap: 80px; }
@@ -573,10 +567,9 @@ body:hover #cursor { opacity: 1; }
         <span class="line"><span class="word italic">Kanya.</span></span>
       </h1>
       <p class="hero-desc">
-        I sit where <strong>marketing strategy meets data intelligence.</strong> 
-        I write content that grows brands, build campaigns backed by numbers, 
-        and translate raw data into decisions people actually act on.
-        <strong>2.5 years. Two disciplines. One analyst.</strong>
+        I combine <strong> marketing strategy, content, and analytics to help businesses make data-informed decisions</strong>. 
+        With experience in SEO, campaign growth, reporting, and data analysis using SQL, Python, and Power BI, 
+        I enjoy working at the intersection of business, marketing, and insights.
       </p>
       <div class="hero-btns">
         <a href="#projects" class="btn-fill">View Projects</a>
@@ -675,13 +668,13 @@ body:hover #cursor { opacity: 1; }
     <div class="eyebrow">The Story</div>
     <div class="story-grid">
       <div>
-        <p class="story-pull">I started in <em>marketing.</em> Data made me <em>dangerous.</em></p>
+        <p class="story-pull">I started in <em>marketing.</em> Data gave me a <em>stronger strategic perspective.</em></p>
         <div class="story-bar"></div>
         <div class="story-text">
-          <p>CS background. First job in marketing. Within 6 months, my manager left — and I was suddenly running the <strong>entire marketing function solo.</strong> Content strategy, SEO, campaigns, reporting, team coordination — all of it.</p>
-          <p>That's when something clicked. The decisions that moved the needle were always backed by data. Not gut feel. Not assumptions. Numbers that told a story.</p>
+          <p>With a Computer Science background and an early career in marketing, I quickly took ownership of the <strong>marketing function independently, managing content strategy, SEO, reporting, campaigns, and team coordination.</strong></p>
+          <p>That's when something clicked. The most impactful business and marketing decisions were consistently backed by data and performance insights.</p>
           <p>So I went deeper. I upskilled in <strong>SQL, Python, and Power BI</strong> — built real projects, analyzed real data, and started asking questions nobody else was asking. The loneliness patterns in 25K+ survey responses. The ridership shifts in 3 years of Chennai Metro data. The behavioral patterns in 50K+ ride bookings.</p>
-          <p>I'm not purely technical. I'm not purely creative. <strong>I'm the person in the middle</strong> — where business problems meet data solutions, and where strategy gets built on evidence.</p>
+          <p>I combine analytical thinking with marketing strategy and communication, where business problems meet data solutions, and where strategy gets built on evidence.</p>
         </div>
       </div>
       <div>
@@ -932,7 +925,7 @@ body:hover #cursor { opacity: 1; }
           </div>
           <div style="display: flex; align-items: center; gap: 20px; margin-top: 16px;">
             <div>
-              <p style="font-size:15px; color: var(--muted); line-height: 1.7;">CS foundation that gave me the technical vocabulary to go deeper into data — SQL, databases, systems thinking. The degree that made everything else make sense.</p>
+              <p style="font-size:15px; color: var(--muted); line-height: 1.7;">CS foundation that gave me the technical vocabulary to go deeper into data — SQL, databases, systems thinking. Built a strong technical foundation in databases, systems, and analytical thinking.</p>
             </div>
             <div style="text-align: right; flex-shrink: 0;">
               <div style="font-family:'Playfair Display',serif; font-size: 52px; font-weight: 900; color: var(--teal); line-height: 1;">8.15</div>
@@ -1047,7 +1040,7 @@ body:hover #cursor { opacity: 1; }
 <section id="beyond" class="section" style="background: var(--cream);">
   <div class="container">
     <div class="eyebrow">Beyond the Work</div>
-    <h2 class="section-title">What feeds the <em>curiosity</em></h2>
+    <h2 class="section-title">Beyond<em>Work</em></h2>
     <div class="beyond-grid">
       <div class="beyond-card reveal">
         <span class="beyond-icon">📚</span>
@@ -1089,7 +1082,7 @@ body:hover #cursor { opacity: 1; }
     <div class="eyebrow" style="justify-content:center; margin-bottom: 24px;">Currently Looking For</div>
     <h2 class="now-title">Open to<br><em>the right role.</em></h2>
     <p class="now-body">
-      Actively looking for roles at <strong>large companies and GCCs in Chennai</strong> where I can work with a real team, contribute to strategy, and do work that actually matters. I'm particularly drawn to roles at the intersection of <strong>business strategy and data</strong> — where the job is understanding what's happening and why, not just running reports.
+      Actively looking for roles at <strong>large companies and GCCs in Chennai</strong>  where I can contribute to strategic, data-driven, and business-focused initiatives. I'm particularly drawn to roles at the intersection of <strong>business strategy and data</strong> — where the job is understanding what's happening and why, contributing to strategic and data-driven decision-making.
     </p>
     <div class="now-roles">
       <span class="role-chip">Marketing Analyst</span>
