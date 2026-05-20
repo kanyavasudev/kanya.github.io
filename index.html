@@ -7,7 +7,7 @@
 <meta name="description" content="Kanya V — Business Analyst & Product Marketing Analyst. I find problems, research deeply, and build solutions backed by data."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:      #F8F6F2;
@@ -140,42 +140,128 @@ a{color:inherit;}
 .proj-intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;margin-bottom:52px;}
 .proj-intro p{font-size:16px;line-height:1.85;color:var(--muted);}
 
-/* All card grids share a "seam" approach: 1px gap + bg on grid = border effect */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);margin-top:1px;}
-.grid-1{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);margin-top:1px;}
+/* ── PROJECT GRID ──
+   Single uniform grid: 3 columns, all cards vertical, equal structure.
+   The seam border trick (1px gap + background on grid) gives clean dividers
+   with zero alignment mismatch.
+─────────────────────────────────────── */
+.proj-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+}
 
-.p-card{background:var(--bg);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:background .25s,transform .25s,box-shadow .25s;position:relative;}
-.p-card:hover{background:var(--white);transform:translateY(-4px);box-shadow:0 20px 56px rgba(0,0,0,.09);z-index:2;}
+/* Every card is a vertical flex column — no horizontal variants */
+.p-card{
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:inherit;
+  transition:background .25s, transform .25s, box-shadow .25s;
+  position:relative;
+  /* No min-height — flex:1 on p-desc handles alignment */
+}
+.p-card:hover{
+  background:var(--white);
+  transform:translateY(-4px);
+  box-shadow:0 20px 56px rgba(0,0,0,.09);
+  z-index:2;
+}
 .p-card:hover .p-arr{transform:translate(3px,-3px);}
-.p-img{width:100%;height:196px;object-fit:cover;object-position:center top;flex-shrink:0;}
-.p-nimg{width:100%;height:196px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;font-size:40px;flex-shrink:0;}
-.p-body{padding:28px 28px 32px;display:flex;flex-direction:column;flex:1;}
-.p-type{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:11px;}
+
+/* Fixed image height — same on every card */
+.p-img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  object-position:center top;
+  flex-shrink:0;
+  display:block;
+}
+.p-nimg{
+  width:100%;
+  height:200px;
+  background:var(--teal-lt);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:44px;
+  flex-shrink:0;
+}
+
+/* Body fills remaining height so footers line up */
+.p-body{
+  padding:28px 28px 32px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.p-type{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:11px;
+}
 .p-type.da{color:var(--teal);}
 .p-type.mkt{color:var(--amber);}
 .p-type.hyb{color:#7A3B00;}
-.p-card h3{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;line-height:1.2;margin-bottom:9px;color:var(--ink);}
-.p-q{font-size:13px;font-style:italic;color:var(--muted);line-height:1.55;margin-bottom:13px;}
-.p-desc{font-size:13.5px;line-height:1.75;color:var(--muted);flex:1;margin-bottom:18px;}
+.p-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:21px;
+  font-weight:700;
+  line-height:1.2;
+  margin-bottom:9px;
+  color:var(--ink);
+}
+.p-q{
+  font-size:13px;
+  font-style:italic;
+  color:var(--muted);
+  line-height:1.55;
+  margin-bottom:13px;
+}
+/* flex:1 pushes pills + footer to bottom, equalising card heights */
+.p-desc{
+  font-size:13.5px;
+  line-height:1.75;
+  color:var(--muted);
+  flex:1;
+  margin-bottom:18px;
+}
 .p-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
-.pp{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;padding:4px 10px;border:1px solid var(--rule);background:var(--bg-alt);color:var(--muted);}
-.p-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:1px solid var(--rule-sm);}
-.p-lnk{font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--teal);text-decoration:none;}
+.pp{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.07em;
+  padding:4px 10px;
+  border:1px solid var(--rule);
+  background:var(--bg-alt);
+  color:var(--muted);
+}
+.p-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:auto;
+  padding-top:14px;
+  border-top:1px solid var(--rule-sm);
+}
+.p-lnk{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--teal);
+  text-decoration:none;
+}
 .p-lnk:hover{text-decoration:underline;}
 .p-arr{font-size:18px;color:var(--teal);transition:transform .3s;line-height:1;}
 
-/* featured row card */
-.p-card.feat{flex-direction:row;}
-.p-card.feat .p-img{width:42%;height:auto;min-height:220px;object-position:center;flex-shrink:0;}
-.p-card.feat .p-body{padding:36px 36px 36px 40px;}
-
-/* wide single-row card */
-.p-card.wide{flex-direction:row;}
-.p-card.wide .p-img{width:28%;height:auto;min-height:180px;object-position:center;flex-shrink:0;}
-.p-card.wide .p-body{padding:36px;}
-
-/* highlight (teal) card */
+/* Highlight (teal) card — same structure, different palette */
 .p-card.hl{background:var(--teal);}
 .p-card.hl:hover{background:#004F4F;}
 .p-card.hl .p-type{color:rgba(255,255,255,.65);}
@@ -298,11 +384,7 @@ footer p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute
   .work-sidebar{position:static;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
   .ws-item{padding:8px 16px;border-bottom:none;border:1px solid var(--rule);font-size:12px;background:var(--white);}
   .ws-item.on{background:var(--teal-lt);}
-  .grid-3{grid-template-columns:repeat(2,1fr);}
-  .p-card.feat{flex-direction:column;}
-  .p-card.feat .p-img{width:100%;height:196px;}
-  .p-card.wide{flex-direction:column;}
-  .p-card.wide .p-img{width:100%;height:196px;}
+  .proj-grid{grid-template-columns:repeat(2,1fr);}
   .skills-wrap{grid-template-columns:1fr;}
   .beyond-grid{grid-template-columns:repeat(2,1fr);}
   .proj-intro{grid-template-columns:1fr;gap:20px;}
@@ -318,7 +400,7 @@ footer p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute
   .section{padding:72px 0;}
   .hero-body{padding:56px 20px 48px;}
   .hero-stats{grid-template-columns:repeat(2,1fr);padding:0 20px;}
-  .grid-3,.grid-2{grid-template-columns:1fr;}
+  .proj-grid{grid-template-columns:1fr;}
   .beyond-grid{grid-template-columns:1fr;}
   .h-chip{display:none;}
   .h-badge{left:0;bottom:-16px;}
@@ -519,8 +601,10 @@ footer p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute
       <p class="rv">Each project began with a genuine business or research question — and concluded with a finding that changed how the problem was understood. This is how I approach analysis.</p>
     </div>
 
-    <!-- Row 1: 3 equal cards -->
-    <div class="grid-3">
+    <!-- Single unified 3-col grid — all cards identical structure -->
+    <div class="proj-grid">
+
+      <!-- 1 -->
       <a href="https://github.com/kanyavasudev/EU-Loneliness-Analysis" target="_blank" class="p-card rv">
         <img src="images/loneliness-analysis.png" alt="Loneliness Analysis" class="p-img" onerror="this.style.display='none'"/>
         <div class="p-body">
@@ -532,17 +616,21 @@ footer p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute
           <div class="p-foot"><a href="https://github.com/kanyavasudev/EU-Loneliness-Analysis" target="_blank" class="p-lnk">View on GitHub</a><span class="p-arr">↗</span></div>
         </div>
       </a>
+
+      <!-- 2 -->
       <a href="https://github.com/kanyavasudev/cmrl-analysis" target="_blank" class="p-card rv d1">
         <img src="images/cmrl-analysis.png" alt="Chennai Metro" class="p-img" onerror="this.style.display='none'"/>
         <div class="p-body">
           <div class="p-type da">Market &amp; Behavioural Research</div>
           <h3>Chennai Metro Ridership Analysis</h3>
           <p class="p-q">"Can data reveal the moment a city changed its behaviour — and why?"</p>
-          <p class="p-desc">Analysed three years of government ridership data to surface adoption trends. Identified a policy-driven shift: smart card adoption grew 17% in a single month — a behavioural change invisible without longitudinal data.</p>
+          <p class="p-desc">Analysed three years of government ridership data to surface adoption trends. Identified a policy-driven behavioural shift: smart card adoption grew 17% in a single month — invisible without longitudinal data.</p>
           <div class="p-pills"><span class="pp">Python</span><span class="pp">MySQL</span><span class="pp">Power BI</span><span class="pp">Market Research</span></div>
           <div class="p-foot"><a href="https://github.com/kanyavasudev/cmrl-analysis" target="_blank" class="p-lnk">View on GitHub</a><span class="p-arr">↗</span></div>
         </div>
       </a>
+
+      <!-- 3 -->
       <a href="https://github.com/kanyavasudev/Ride-Booking-Analysis-Python-EDA" target="_blank" class="p-card rv d2">
         <img src="images/uber-rides-analysis.png" alt="Ride Booking" class="p-img" onerror="this.style.display='none'"/>
         <div class="p-body">
@@ -554,53 +642,51 @@ footer p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute
           <div class="p-foot"><a href="https://github.com/kanyavasudev/Ride-Booking-Analysis-Python-EDA" target="_blank" class="p-lnk">View on GitHub</a><span class="p-arr">↗</span></div>
         </div>
       </a>
-    </div>
 
-    <!-- Row 2: featured wide + highlight -->
-    <div class="grid-2">
-      <a href="https://github.com/kanyavasudev/sql-data-warehouse-project" target="_blank" class="p-card feat rv">
+      <!-- 4 -->
+      <a href="https://github.com/kanyavasudev/sql-data-warehouse-project" target="_blank" class="p-card rv">
         <img src="images/overall_medallion_architecture.drawio.png" alt="SQL Data Warehouse" class="p-img" onerror="this.style.display='none'"/>
         <div class="p-body">
           <div class="p-type da">Data Engineering · Business Intelligence</div>
           <h3>End-to-End SQL Data Warehouse</h3>
-          <p class="p-q">"How do you turn raw, disconnected ERP and CRM data into business-ready intelligence?"</p>
-          <p class="p-desc">Designed and built a complete data warehouse using MySQL with Medallion Architecture (Bronze → Silver → Gold layers). Cleaned, modelled, and structured raw business data into analytics-ready tables — the infrastructure that makes meaningful reporting possible at scale.</p>
-          <div class="p-pills"><span class="pp">MySQL</span><span class="pp">ETL Pipeline</span><span class="pp">Medallion Architecture</span><span class="pp">Data Modelling</span><span class="pp">Business Intelligence</span></div>
+          <p class="p-q">"How do you turn raw ERP and CRM data into business-ready intelligence?"</p>
+          <p class="p-desc">Designed and built a complete data warehouse using MySQL with Medallion Architecture (Bronze → Silver → Gold). Cleaned, modelled, and structured raw business data into analytics-ready tables for scalable reporting.</p>
+          <div class="p-pills"><span class="pp">MySQL</span><span class="pp">ETL Pipeline</span><span class="pp">Medallion Architecture</span><span class="pp">Data Modelling</span></div>
           <div class="p-foot"><a href="https://github.com/kanyavasudev/sql-data-warehouse-project" target="_blank" class="p-lnk">View on GitHub</a><span class="p-arr">↗</span></div>
         </div>
       </a>
+
+      <!-- 5 — highlight card -->
       <div class="p-card hl rv d1">
         <div class="p-nimg">📈</div>
         <div class="p-body">
           <div class="p-type mkt">Product Marketing Analytics</div>
           <h3>Instagram Audience Growth — Freelance</h3>
           <p class="p-q">"How do you grow an audience 15× in three months with zero paid spend?"</p>
-          <p class="p-desc">Diagnosed a client's stagnant social presence through content performance data, identified high-engagement patterns, and built a data-led content calendar strategy. Audience grew from 100 to 1,500+ organically. Built weekly KPI dashboards to track and iterate every decision.</p>
+          <p class="p-desc">Diagnosed a client's stagnant social presence through content performance data. Identified high-engagement patterns, built a data-led calendar strategy. Audience grew from 100 to 1,500+ organically. Weekly KPI dashboards tracked every decision.</p>
           <div class="p-pills"><span class="pp">GA4</span><span class="pp">Content Strategy</span><span class="pp">KPI Dashboards</span><span class="pp">Organic Growth</span></div>
-          <div class="p-foot"><span class="p-lnk">Freelance Client Work</span></div>
+          <div class="p-foot"><span class="p-lnk">Freelance Client Work</span><span class="p-arr">↗</span></div>
         </div>
       </div>
-    </div>
 
-    <!-- Row 3: single wide card -->
-    <div class="grid-1">
-      <div class="p-card wide rv">
+      <!-- 6 -->
+      <div class="p-card rv d2">
         <img src="images/library-management.png" alt="Library Management" class="p-img" onerror="this.style.display='none'"/>
         <div class="p-body">
-          <div class="p-type da">Systems Design · Full-Stack Deployment</div>
+          <div class="p-type da">Systems Design · Full-Stack</div>
           <h3>Library Management System</h3>
-          <p class="p-q">"Can a complete, production-ready system be designed and deployed end-to-end?"</p>
-          <p class="p-desc">Built a full-stack library management application with real-time CRUD operations using Python and MySQL. Deployed publicly on Streamlit — live and accessible. Demonstrates the ability to take a problem from requirements through to a working, deployed solution.</p>
-          <div class="p-pills"><span class="pp">Python</span><span class="pp">MySQL</span><span class="pp">Streamlit</span><span class="pp">Full-Stack</span><span class="pp">Deployment</span></div>
+          <p class="p-q">"Can a production-ready system be designed and deployed end-to-end?"</p>
+          <p class="p-desc">Built a full-stack library management application with real-time CRUD operations using Python and MySQL. Deployed publicly on Streamlit — live and accessible. Takes a problem from requirements to a working, deployed solution.</p>
+          <div class="p-pills"><span class="pp">Python</span><span class="pp">MySQL</span><span class="pp">Streamlit</span><span class="pp">Full-Stack</span></div>
           <div class="p-foot">
-            <div style="display:flex;gap:24px;">
+            <div style="display:flex;gap:20px;">
               <a href="https://librarymanagement-kanya.streamlit.app/" target="_blank" class="p-lnk">Live App ↗</a>
               <a href="https://github.com/kanyavasudev/Library_Management_System" target="_blank" class="p-lnk">GitHub ↗</a>
             </div>
-            <span class="p-arr">↗</span>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
